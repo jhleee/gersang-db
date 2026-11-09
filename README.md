@@ -3,6 +3,7 @@
 천하제일상 거상(The Great Merchant)의 **몬스터 · 출몰지 · 능력치 · 저항 · 속성값 · 경험치 · 드랍 아이템 · 던전 입장 조건**을
 AI 에이전트가 그대로 읽고 계산에 쓸 수 있게 마크다운 위키 + 정형 JSON 으로 정리한 저장소다.
 
+> 🎯 **거상 YOLO 객체탐지 (몬스터·드랍아이템)**: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jhleee/gersang-db/blob/main/notebooks/gersang_yolo_training.ipynb)  · [검수 리포트](docs/yolo_report.md)  
 > 🌐 **웹 도감 & 육의전 시세 뷰어 (GitHub Pages)**: [https://jhleee.github.io/gersang-db/](https://jhleee.github.io/gersang-db/)  
 > - 아이템 1,687종 및 드랍 몬스터 역색인 실시간 검색  
 > - 비호 서버 포함 13개 전 서버 육의전 실시간 시세 및 딥링크  
@@ -40,11 +41,70 @@ gersang-db/
 │   ├── drops_index.json          ← 아이템 역색인 JSON
 │   ├── areas.tsv                 ← 공식 지역안내 원문 수집본
 │   └── README.md                 ← 데이터 스키마 설명
+├── assets/                       ← YOLO 학습용 원본 에셋 (스프라이트·아이템·배경)
+├── test_images/                  ← 실제 사냥 화면 13장 (학습에 쓰지 않은 검수용)
+├── notebooks/
+│   └── gersang_yolo_training.ipynb  ← Colab 원클릭 학습 노트북
+├── models/
+│   └── gersang_yolov8n_synth_baseline.pt  ← 합성 데이터로 학습한 기준 가중치
+├── docs/
+│   └── yolo_report.md            ← 데이터셋 구축·실화면 검수 리포트
 └── tools/
     ├── curate_data.py            ← 원시 수집본 정리(중복 병합·출몰지 정규화)
     ├── build_docs.py             ← JSON → 마크다운 문서/색인 생성기
-    └── verify_sample.py          ← 표본 대조 검증
+    ├── verify_sample.py          ← 표본 대조 검증
+    ├── collect_assets.py         ← 거상 스프라이트·아이템·네거티브 수집
+    ├── make_backgrounds.py       ← 실제 사냥 화면 크롭 + 절차적 지형 텍스처
+    ├── generate_yolo_dataset.py  ← 합성 YOLO 데이터셋 생성기(정답 라벨 100%)
+    └── eval_real.py              ← 실제 사냥 화면 검수(템플릿 매칭 대조)
 ```
+
+---
+
+## 거상 YOLO 객체탐지 (몬스터·드랍아이템)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jhleee/gersang-db/blob/main/notebooks/gersang_yolo_training.ipynb)
+
+인게임 스프라이트와 실제 사냥 화면을 합성해 **정답 라벨이 100% 맞는 학습 데이터**를 만들고,
+YOLOv8로 몬스터·드랍아이템을 탐지하는 파이프라인이다. 자세한 결과와 한계는 [docs/yolo_report.md](docs/yolo_report.md).
+
+| 클래스 ID | 이름 | 등장 |
+|---|---|---|
+| 0 | `imugi` 이무기 | 유명계 3층 |
+| 1 | `yeomra` 염라대왕 | 유명계 3층 염라존 |
+| 2 | `docheol` 어린도철 | 대둔산 은신처 |
+| 3 | `nue` 누에 | 일본 환수 |
+| 4 | `sammun` 중독된삼문 | 검은상단 주둔지 |
+| 5 | `item_drop` 드랍아이템 | 유명계석·흉수/환수의혼·상자·정수 |
+
+### Colab으로 거상 YOLO 모델 학습하기
+
+1. 위 **Open in Colab** 배지를 누른다.
+2. 셀 1( GPU 확인 ) → 셀 7(가중치·ONNX 다운로드)까지 **▶ 를 차례로** 누른다.
+   - 셀 3에서 저장소 에셋으로 합성 데이터 1,000장을 자동 생성한다(CPU 2~3분).
+   - 무료 T4 기준 학습(50 epoch, 640px)은 10~15분이다.
+3. 마지막 셀에서 `best.pt`(재학습용)와 `best.onnx`(실시간 추론용)를 내려받는다.
+
+### 로컬에서 직접 돌리기
+
+```bash
+python tools/collect_assets.py --out assets --negatives 150      # 스프라이트 수집
+python tools/make_backgrounds.py --out assets/backgrounds         # 배경 패치
+python tools/generate_yolo_dataset.py --out datasets/gersang_yolo --images 1000
+yolo detect train data=datasets/gersang_yolo/data.yaml model=yolov8n.pt epochs=50 imgsz=640 batch=16
+yolo detect predict model=runs/detect/train/weights/best.pt source=test_images conf=0.25 save=True
+```
+
+### 현재 성능 (요약)
+
+| 검증 대상 | 결과 |
+|---|---|
+| 합성 검증셋 200장 (CPU 기준 모델) | mAP50 **0.887** / mAP50-95 **0.745** |
+| 실제 사냥 화면 – 이무기 흩어진 무리 | 11마리 중 **9마리 검출**(신뢰도 0.7~0.95) |
+| 실제 사냥 화면 – 이무기 밀집 | 15마리 중 10마리(겹침·이펙트 구간에서 누락) |
+| 염라대왕 | 확보한 염라존 프레임이 전부 스킬 이펙트/사망 장면이라 **판정 보류** |
+
+> 학습 데이터는 합성이라 **실사냥 화면을 라벨링해 val에 섞는 것**이 가장 효과가 큰 다음 단계다.
 
 ---
 

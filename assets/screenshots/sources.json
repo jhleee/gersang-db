@@ -1,0 +1,104 @@
+{
+  "sources": [
+    {
+      "file": "assets/screenshots/gyegok_1.png",
+      "label": "gyegok_1",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/gyegok_2.png",
+      "label": "gyegok_2",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/sorimsa_water.png",
+      "label": "sorimsa_water",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/sorimsa_field.png",
+      "label": "sorimsa_field",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/sorimsa_snow.png",
+      "label": "sorimsa_snow",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/chau_temple.png",
+      "label": "chau_temple",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/chau_ice.png",
+      "label": "chau_ice",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/chau_wall.png",
+      "label": "chau_wall",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/chau_snow.png",
+      "label": "chau_snow",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    {
+      "file": "assets/screenshots/daedunsan_lava.png",
+      "label": "daedunsan_lava",
+      "crop": [
+        0.08,
+        0.08,
+        0.92,
+        0.92
+      ]
+    }
+  ]
+}

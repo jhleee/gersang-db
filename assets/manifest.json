@@ -1,0 +1,152 @@
+{
+  "classes": [
+    "imugi",
+    "yeomra",
+    "docheol",
+    "nue",
+    "sammun",
+    "item_drop"
+  ],
+  "generated_by": "tools/collect_assets.py",
+  "source": "https://gogolap.com/gersang/db/monster",
+  "monsters": [
+    {
+      "class": "imugi",
+      "name": "이무기",
+      "key": "python_100",
+      "file": "monsters/imugi/python_100.png",
+      "size": [
+        152,
+        127
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/python_100.webp"
+    },
+    {
+      "class": "yeomra",
+      "name": "염라대왕",
+      "key": "hellking_76",
+      "file": "monsters/yeomra/hellking_76.png",
+      "size": [
+        112,
+        139
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hellking_76.webp"
+    },
+    {
+      "class": "docheol",
+      "name": "어린도철",
+      "key": "dochul3_100",
+      "file": "monsters/docheol/dochul3_100.png",
+      "size": [
+        63,
+        86
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/dochul3_100.webp"
+    },
+    {
+      "class": "nue",
+      "name": "누에",
+      "key": "nue_160",
+      "file": "monsters/nue/nue_160.png",
+      "size": [
+        73,
+        81
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/nue_160.webp"
+    },
+    {
+      "class": "sammun",
+      "name": "중독된삼문",
+      "key": "poisoninga_49",
+      "file": "monsters/sammun/poisoninga_49.png",
+      "size": [
+        82,
+        88
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/poisoninga_49.webp"
+    }
+  ],
+  "items": [
+    {
+      "name": "유명계석",
+      "key": "element01_i_8",
+      "file": "items/element01_i_8.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element01_i_8.webp"
+    },
+    {
+      "name": "흉수의혼",
+      "key": "creature_i_19",
+      "file": "items/creature_i_19.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/creature_i_19.webp"
+    },
+    {
+      "name": "환수의혼",
+      "key": "creature_i_17",
+      "file": "items/creature_i_17.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/creature_i_17.webp"
+    },
+    {
+      "name": "엽전상자",
+      "key": "lunique01_31",
+      "file": "items/lunique01_31.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/lunique01_31.webp"
+    },
+    {
+      "name": "일반 보급상자(거래불가)",
+      "key": "element07_i_56",
+      "file": "items/element07_i_56.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element07_i_56.webp"
+    },
+    {
+      "name": "상급 보급상자(거래불가)",
+      "key": "element07_i_57",
+      "file": "items/element07_i_57.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element07_i_57.webp"
+    },
+    {
+      "name": "생명의정수",
+      "key": "element03_i_59",
+      "file": "items/element03_i_59.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element03_i_59.webp"
+    },
+    {
+      "name": "심연의정수",
+      "key": "element03_i_58",
+      "file": "items/element03_i_58.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element03_i_58.webp"
+    }
+  ],
+  "negatives": []
+}
