@@ -32,23 +32,26 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
-CLASSES = ["imugi", "yeomra", "docheol", "nue", "sammun", "item_drop"]
+CLASSES = ["imugi", "yeomra", "docheol", "nue", "sammun", "icecrab", "tuttleman", "item_drop"]
 
 # 인게임 화면에서 관측한 표시 배율(640x640 캔버스 기준).
 #   이무기   : 773x513 실사격에서 약 95px 높이 -> 원본 127px의 0.9배
 #   염라대왕 : 보스라 1.3~1.6배로 크게 그려진다(유명계 3층 실사격/썸네일 확인)
 #   나머지   : 원본 크기 ±25%
 SCALE_RANGE = {
-    "imugi": (0.72, 1.05),
+    "imugi": (0.70, 1.05),
     "yeomra": (1.15, 1.65),
-    "docheol": (0.85, 1.25),
-    "nue": (0.85, 1.25),
-    "sammun": (0.85, 1.25),
+    "docheol": (0.80, 1.25),
+    "nue": (0.80, 1.25),
+    "sammun": (0.80, 1.25),
+    "icecrab": (0.80, 1.25),
+    "tuttleman": (0.85, 1.25),
 }
 ITEM_SCALE_RANGE = (0.35, 0.62)
 KO_NAMES = {
     "imugi": "이무기", "yeomra": "염라대왕", "docheol": "어린도철",
-    "nue": "누에", "sammun": "중독된삼문", "item_drop": "드랍아이템",
+    "nue": "누에", "sammun": "중독된삼문", "icecrab": "얼음게",
+    "tuttleman": "거북궁사", "item_drop": "드랍아이템",
 }
 FONT_CANDIDATES = [
     "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
@@ -176,6 +179,11 @@ def place_sprite(canvas: np.ndarray, owner: np.ndarray,
     H, W = canvas.shape[:2]
     w = max(4, int(round(sprite.width * scale)))
     h = max(4, int(round(sprite.height * scale)))
+    # 보행/대기 호흡 애니메이션 신축(squash & stretch) 모사
+    if rng.random() < 0.65:
+        squash = rng.uniform(0.93, 1.07)
+        w = max(4, int(round(w / squash)))
+        h = max(4, int(round(h * squash)))
     spr = sprite
     if flip:
         spr = hflip(spr)
@@ -277,8 +285,8 @@ def draw_damage_numbers(canvas: np.ndarray, boxes, rng: random.Random,
 
 
 def draw_skill_fx(canvas: np.ndarray, boxes, rng: random.Random) -> None:
-    """연옥술·화염 계열 스킬이 몬스터를 덮는 상황을 흉내낸다(가림/광원 강화)."""
-    if not boxes or rng.random() > 0.35:
+    """연옥술·화염 및 빙결·얼음 계열 스킬이 몬스터를 덮는 상황을 흉내낸다(가림/광원 강화)."""
+    if not boxes or rng.random() > 0.40:
         return
     H, W = canvas.shape[:2]
     img = Image.fromarray(np.clip(canvas, 0, 255).astype(np.uint8))
@@ -287,12 +295,14 @@ def draw_skill_fx(canvas: np.ndarray, boxes, rng: random.Random) -> None:
     do = ImageDraw.Draw(overlay)
     dm = ImageDraw.Draw(mask)
     warm = [(255, 190, 90), (255, 120, 40), (250, 240, 220), (200, 60, 30)]
+    cold = [(160, 230, 255), (100, 180, 255), (220, 250, 255), (140, 200, 240)]
+    palette = cold if rng.random() < 0.5 else warm
     for _ in range(rng.randint(2, 6)):
         b = rng.choice(boxes)
         cx = int((b[0] + b[2]) / 2 + rng.uniform(-0.5, 0.5) * (b[2] - b[0]))
         cy = int(b[3] - rng.uniform(0.0, 0.7) * (b[3] - b[1]))
         r = int(rng.uniform(0.3, 1.1) * max(12, (b[2] - b[0])))
-        col = rng.choice(warm)
+        col = rng.choice(palette)
         do.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col)
         dm.ellipse((cx - r, cy - r, cx + r, cy + r), fill=rng.randint(60, 150))
     overlay = overlay.filter(ImageFilter.GaussianBlur(rng.uniform(3, 8)))
@@ -324,8 +334,12 @@ def build_scene(assets: Assets, size: int, rng: random.Random,
         plan.append(("nue", rng.randint(2, 7)))
     elif scene_type == "sammun":
         plan.append(("sammun", rng.randint(3, 9)))
+    elif scene_type == "icecrab":
+        plan.append(("icecrab", rng.randint(4, 11)))
+    elif scene_type == "tuttleman":
+        plan.append(("tuttleman", rng.randint(3, 9)))
     elif scene_type == "mixed":
-        picks = rng.sample(CLASSES[:-1], rng.randint(2, 3))
+        picks = rng.sample(CLASSES[:-1], rng.randint(2, 4))
         for c in picks:
             plan.append((c, rng.randint(1, 4)))
     elif scene_type == "drop":
@@ -500,7 +514,7 @@ def main() -> int:
     n_train = args.images - n_val
     split_rng = random.Random(args.seed + 1)
     val_idx = set(split_rng.sample(range(args.images), n_val))
-    scene_types = ["imugi", "yeomra", "docheol", "nue", "sammun", "drop", "mixed", "drop"]
+    scene_types = ["imugi", "yeomra", "docheol", "nue", "sammun", "icecrab", "tuttleman", "drop", "mixed", "icecrab", "drop"]
     stats = {c: {"train": 0, "val": 0} for c in CLASSES}
     boxes_total = {"train": 0, "val": 0}
 
@@ -530,7 +544,7 @@ def main() -> int:
         d = ImageDraw.Draw(img)
         for b in boxes:
             x0, y0, x1, y1 = b["xyxy"]
-            col = (0, 255, 80) if b["cls"] != 5 else (255, 220, 0)
+            col = (255, 220, 0) if b["cls"] == len(CLASSES) - 1 else (0, 255, 80)
             d.rectangle([x0, y0, x1, y1], outline=col, width=2)
             d.text((x0 + 3, y0 + 1), CLASSES[b["cls"]], fill=col, font=load_font(13))
         img.save(out / "preview" / f"{stem}.jpg", quality=88)

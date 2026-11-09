@@ -34,27 +34,31 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
 
 # 클래스 정의 — data.yaml 과 반드시 같은 순서
-CLASSES = ["imugi", "yeomra", "docheol", "nue", "sammun", "item_drop"]
+CLASSES = ["imugi", "yeomra", "docheol", "nue", "sammun", "icecrab", "tuttleman", "item_drop"]
 
-# 클래스별 "정확히 이 몬스터" 의 도감 표기 이름
-MONSTER_TARGETS = {
-    "imugi": "이무기",            # 유명계 3층
-    "yeomra": "염라대왕",          # 유명계 3층 염라존
-    "docheol": "어린도철",         # 대둔산 은신처
-    "nue": "누에",                # 일본 환수
-    "sammun": "중독된삼문",        # 검은상단 주둔지
+# 클래스별 대상 몬스터 (이름 또는 포함 키워드) -> 해당 클래스 폴더에 복수 스프라이트 저장
+MONSTER_TARGETS: dict[str, list[str]] = {
+    "imugi": ["이무기", "사악한이무기", "연못이무기", "늪지이무기", "뿌리 이무기", "이무기氷"],
+    "yeomra": ["염라대왕"],
+    "docheol": ["어린도철", "도철", "흉포한 도철", "잠식된도철", "태초의 도철", "타락한도철"],
+    "nue": ["누에", "조련된 누에", "얼음누에"],
+    "sammun": ["중독된삼문", "삼문", "진보의 삼문", "각성한 삼문"],
+    "icecrab": ["얼음게"],
+    "tuttleman": ["거북궁사"],
 }
 
-# item_drop 클래스로 묶을 드랍 아이템(유석/혼/상자/정수)
+# item_drop 클래스로 묶을 주요 드랍 아이템 키워드
 ITEM_TARGETS = [
-    "유명계석",
-    "흉수의혼",
-    "환수의혼",
-    "엽전상자",
-    "일반 보급상자(거래불가)",
-    "상급 보급상자(거래불가)",
-    "생명의정수",
-    "심연의정수",
+    "유명계석", "흉수의혼", "환수의혼", "생명의정수", "심연의정수",
+    "엽전상자", "보급상자", "뇌정석", "뇌전이 깃든 여의주", "정기의구슬조각",
+    "작은물의속성석", "물의속성석", "작은불의속성석", "불의속성석",
+    "작은뇌전의속성석", "뇌전의속성석", "작은바람의속성석", "바람의속성석",
+    "작은땅의속성석", "땅의속성석", "백색보주", "황색보주", "흑색보주",
+    "단단한 뼈조각", "거북이등껍질", "집게발", "얼음결정", "눈의정수",
+    "비늘조각", "이무기의비늘", "고대신검의자루", "주술 비법", "상급정수",
+    "선조석", "결정조각", "영혼석", "상급 보급상자", "일반 보급상자",
+    "봉인된힘의파편", "암흑석", "태양석", "오색가루", "영혼의조각",
+    "황제의반지", "태황의반지", "신수의근원", "원통한원혼의비명",
 ]
 
 
@@ -130,48 +134,71 @@ def main() -> int:
 
     print("[2/4] 클래스 스프라이트 다운로드")
     used_sprites = set()
-    for cls, target in MONSTER_TARGETS.items():
-        hits = [m for m in monsters if m["name"] == target]
-        if not hits:
-            print(f"  !! '{target}' 를 도감에서 찾지 못했습니다", file=sys.stderr)
-            continue
-        # 같은 스프라이트를 쓰는 중복 카드는 하나만
-        for m in hits:
-            if m["sprite"] in used_sprites:
-                continue
-            used_sprites.add(m["sprite"])
-            key = Path(m["sprite"]).stem
-            dest = out / "monsters" / cls / f"{key}.png"
-            data = http_get(ORIGIN + m["sprite"], referer=LIST_URL)
-            w, h = save_webp(data, dest)
-            manifest["monsters"].append({
-                "class": cls, "name": m["name"], "key": key,
-                "file": str(dest.relative_to(out)), "size": [w, h],
-                "url": ORIGIN + m["sprite"]})
-            print(f"  {cls:9s} <- {m['name']:12s} {dest.name} {w}x{h}")
-            break
+    all_target_names = [name for targets in MONSTER_TARGETS.values() for name in targets]
+
+    for cls, targets in MONSTER_TARGETS.items():
+        cls_dir = out / "monsters" / cls
+        cls_dir.mkdir(parents=True, exist_ok=True)
+        count = 0
+        for target in targets:
+            hits = [m for m in monsters if target in m["name"] or target in m["alt"]]
+            for m in hits:
+                if m["sprite"] in used_sprites:
+                    continue
+                used_sprites.add(m["sprite"])
+                key = Path(m["sprite"]).stem
+                dest = cls_dir / f"{key}.png"
+                if not dest.exists():
+                    try:
+                        data = http_get(ORIGIN + m["sprite"], referer=LIST_URL)
+                        w, h = save_webp(data, dest)
+                    except Exception as e:
+                        print(f"  err {m['name']}: {e}", file=sys.stderr)
+                        continue
+                else:
+                    from PIL import Image
+                    im = Image.open(dest)
+                    w, h = im.size
+                manifest["monsters"].append({
+                    "class": cls, "name": m["name"], "key": key,
+                    "file": str(dest.relative_to(out)), "size": [w, h],
+                    "url": ORIGIN + m["sprite"]})
+                count += 1
+                print(f"  {cls:9s} <- {m['name']:14s} {dest.name} {w}x{h}")
+        print(f"  ==> [{cls}] 스프라이트 총 {count}개 확보")
 
     print("[3/4] 드랍 아이템 아이콘 다운로드")
+    items_dir = out / "items"
+    items_dir.mkdir(parents=True, exist_ok=True)
+    item_count = 0
     for name in ITEM_TARGETS:
-        src = items.get(name) or next((v for k, v in items.items()
-                                       if k.split("(")[0].strip() == name), None)
-        if not src:
-            print(f"  !! 아이템 '{name}' 없음", file=sys.stderr)
-            continue
-        key = Path(src).stem
-        dest = out / "items" / f"{key}.png"
-        data = http_get(ORIGIN + src, referer=LIST_URL)
-        w, h = save_webp(data, dest)
-        manifest["items"].append({"name": name, "key": key,
-                                  "file": str(dest.relative_to(out)),
-                                  "size": [w, h], "url": ORIGIN + src})
-        print(f"  item_drop <- {name:16s} {dest.name} {w}x{h}")
+        hits = [(alt, src) for alt, src in items.items() if name in alt]
+        for alt, src in hits[:3]: # 키워드당 최대 3개
+            key = Path(src).stem
+            dest = items_dir / f"{key}.png"
+            if not dest.exists():
+                try:
+                    data = http_get(ORIGIN + src, referer=LIST_URL)
+                    w, h = save_webp(data, dest)
+                except Exception as e:
+                    print(f"  err item {alt}: {e}", file=sys.stderr)
+                    continue
+            else:
+                from PIL import Image
+                im = Image.open(dest)
+                w, h = im.size
+            manifest["items"].append({"name": alt, "key": key,
+                                      "file": str(dest.relative_to(out)),
+                                      "size": [w, h], "url": ORIGIN + src})
+            item_count += 1
+            print(f"  item_drop <- {alt:18s} {dest.name} {w}x{h}")
+    print(f"  ==> 드랍 아이템 총 {item_count}개 확보")
 
     print(f"[4/4] 하드 네거티브 {args.negatives}종 다운로드 (학습 대상 제외)")
     rng = random.Random(args.seed)
     pool = [m for m in monsters
             if m["sprite"] not in used_sprites
-            and not any(t in m["name"] for t in MONSTER_TARGETS.values())]
+            and not any(t in m["name"] for t in all_target_names)]
     rng.shuffle(pool)
     got = 0
     for m in pool:

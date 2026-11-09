@@ -5,11 +5,68 @@
     "docheol",
     "nue",
     "sammun",
+    "icecrab",
+    "tuttleman",
     "item_drop"
   ],
   "generated_by": "tools/collect_assets.py",
   "source": "https://gogolap.com/gersang/db/monster",
   "monsters": [
+    {
+      "class": "imugi",
+      "name": "뿌리 이무기",
+      "key": "rootpython_n_0",
+      "file": "monsters/imugi/rootpython_n_0.png",
+      "size": [
+        121,
+        86
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/rootpython_n_0.webp"
+    },
+    {
+      "class": "imugi",
+      "name": "연못이무기",
+      "key": "dragon_w_75",
+      "file": "monsters/imugi/dragon_w_75.png",
+      "size": [
+        156,
+        187
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/dragon_w_75.webp"
+    },
+    {
+      "class": "imugi",
+      "name": "늪지이무기",
+      "key": "swamphydra_100",
+      "file": "monsters/imugi/swamphydra_100.png",
+      "size": [
+        129,
+        120
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/swamphydra_100.webp"
+    },
+    {
+      "class": "imugi",
+      "name": "사악한이무기(雷)",
+      "key": "bsnake_80",
+      "file": "monsters/imugi/bsnake_80.png",
+      "size": [
+        164,
+        107
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bsnake_80.webp"
+    },
+    {
+      "class": "imugi",
+      "name": "이무기氷",
+      "key": "ice_python_115",
+      "file": "monsters/imugi/ice_python_115.png",
+      "size": [
+        106,
+        87
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/ice_python_115.webp"
+    },
     {
       "class": "imugi",
       "name": "이무기",
@@ -44,8 +101,63 @@
       "url": "https://gogolap.com/gersang/characters/fullwait/dochul3_100.webp"
     },
     {
+      "class": "docheol",
+      "name": "잠식된도철",
+      "key": "dochul_abyss_f_n_0",
+      "file": "monsters/docheol/dochul_abyss_f_n_0.png",
+      "size": [
+        230,
+        250
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/dochul_abyss_f_n_0.webp"
+    },
+    {
+      "class": "docheol",
+      "name": "태초의 도철",
+      "key": "ancient_dochul_n_0_0",
+      "file": "monsters/docheol/ancient_dochul_n_0_0.png",
+      "size": [
+        202,
+        265
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/ancient_dochul_n_0_0.webp"
+    },
+    {
+      "class": "docheol",
+      "name": "흉포한 도철",
+      "key": "dochul4_100",
+      "file": "monsters/docheol/dochul4_100.png",
+      "size": [
+        122,
+        165
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/dochul4_100.webp"
+    },
+    {
+      "class": "docheol",
+      "name": "타락한도철",
+      "key": "fire_dochul_n_0",
+      "file": "monsters/docheol/fire_dochul_n_0.png",
+      "size": [
+        156,
+        222
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/fire_dochul_n_0.webp"
+    },
+    {
+      "class": "docheol",
+      "name": "도철",
+      "key": "dochul1_100",
+      "file": "monsters/docheol/dochul1_100.png",
+      "size": [
+        110,
+        149
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/dochul1_100.webp"
+    },
+    {
       "class": "nue",
-      "name": "누에",
+      "name": "조련된 누에",
       "key": "nue_160",
       "file": "monsters/nue/nue_160.png",
       "size": [
@@ -53,6 +165,17 @@
         81
       ],
       "url": "https://gogolap.com/gersang/characters/fullwait/nue_160.webp"
+    },
+    {
+      "class": "nue",
+      "name": "얼음누에",
+      "key": "icenue_160",
+      "file": "monsters/nue/icenue_160.png",
+      "size": [
+        137,
+        164
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/icenue_160.webp"
     },
     {
       "class": "sammun",
@@ -64,6 +187,61 @@
         88
       ],
       "url": "https://gogolap.com/gersang/characters/fullwait/poisoninga_49.webp"
+    },
+    {
+      "class": "sammun",
+      "name": "진보의 삼문",
+      "key": "advancedsammun_n_0",
+      "file": "monsters/sammun/advancedsammun_n_0.png",
+      "size": [
+        145,
+        100
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/advancedsammun_n_0.webp"
+    },
+    {
+      "class": "sammun",
+      "name": "각성한 삼문(雷)",
+      "key": "awakened_sammun_n_0",
+      "file": "monsters/sammun/awakened_sammun_n_0.png",
+      "size": [
+        89,
+        113
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/awakened_sammun_n_0.webp"
+    },
+    {
+      "class": "sammun",
+      "name": "삼문",
+      "key": "sammun_130",
+      "file": "monsters/sammun/sammun_130.png",
+      "size": [
+        79,
+        87
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/sammun_130.webp"
+    },
+    {
+      "class": "icecrab",
+      "name": "얼음게",
+      "key": "icecrab_101",
+      "file": "monsters/icecrab/icecrab_101.png",
+      "size": [
+        110,
+        78
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/icecrab_101.webp"
+    },
+    {
+      "class": "tuttleman",
+      "name": "거북궁사",
+      "key": "tuttleman_52",
+      "file": "monsters/tuttleman/tuttleman_52.png",
+      "size": [
+        135,
+        131
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/tuttleman_52.webp"
     }
   ],
   "items": [
@@ -98,6 +276,26 @@
       "url": "https://gogolap.com/gersang/items/creature_i_17.webp"
     },
     {
+      "name": "생명의정수",
+      "key": "element03_i_59",
+      "file": "items/element03_i_59.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element03_i_59.webp"
+    },
+    {
+      "name": "심연의정수",
+      "key": "element03_i_58",
+      "file": "items/element03_i_58.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element03_i_58.webp"
+    },
+    {
       "name": "엽전상자",
       "key": "lunique01_31",
       "file": "items/lunique01_31.png",
@@ -128,25 +326,2306 @@
       "url": "https://gogolap.com/gersang/items/element07_i_57.webp"
     },
     {
-      "name": "생명의정수",
-      "key": "element03_i_59",
-      "file": "items/element03_i_59.png",
+      "name": "뇌정석",
+      "key": "element02_i_35",
+      "file": "items/element02_i_35.png",
       "size": [
         60,
         60
       ],
-      "url": "https://gogolap.com/gersang/items/element03_i_59.webp"
+      "url": "https://gogolap.com/gersang/items/element02_i_35.webp"
     },
     {
-      "name": "심연의정수",
-      "key": "element03_i_58",
-      "file": "items/element03_i_58.png",
+      "name": "뇌전이 깃든 여의주",
+      "key": "element02_i_66",
+      "file": "items/element02_i_66.png",
       "size": [
         60,
         60
       ],
-      "url": "https://gogolap.com/gersang/items/element03_i_58.webp"
+      "url": "https://gogolap.com/gersang/items/element02_i_66.webp"
+    },
+    {
+      "name": "정기의구슬조각(火)",
+      "key": "element04_i_32",
+      "file": "items/element04_i_32.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element04_i_32.webp"
+    },
+    {
+      "name": "정기의구슬조각(水)",
+      "key": "element04_i_31",
+      "file": "items/element04_i_31.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element04_i_31.webp"
+    },
+    {
+      "name": "정기의구슬조각(風)",
+      "key": "element04_i_29",
+      "file": "items/element04_i_29.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element04_i_29.webp"
+    },
+    {
+      "name": "작은물의속성석",
+      "key": "element02_i_86",
+      "file": "items/element02_i_86.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_86.webp"
+    },
+    {
+      "name": "작은물의속성석",
+      "key": "element02_i_86",
+      "file": "items/element02_i_86.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_86.webp"
+    },
+    {
+      "name": "작은불의속성석",
+      "key": "element02_i_85",
+      "file": "items/element02_i_85.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_85.webp"
+    },
+    {
+      "name": "작은불의속성석",
+      "key": "element02_i_85",
+      "file": "items/element02_i_85.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_85.webp"
+    },
+    {
+      "name": "작은뇌전의속성석",
+      "key": "element02_i_88",
+      "file": "items/element02_i_88.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_88.webp"
+    },
+    {
+      "name": "작은뇌전의속성석",
+      "key": "element02_i_88",
+      "file": "items/element02_i_88.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_88.webp"
+    },
+    {
+      "name": "작은바람의속성석",
+      "key": "element02_i_87",
+      "file": "items/element02_i_87.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_87.webp"
+    },
+    {
+      "name": "작은바람의속성석",
+      "key": "element02_i_87",
+      "file": "items/element02_i_87.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_87.webp"
+    },
+    {
+      "name": "작은땅의속성석",
+      "key": "element06_i_11",
+      "file": "items/element06_i_11.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element06_i_11.webp"
+    },
+    {
+      "name": "작은땅의속성석",
+      "key": "element06_i_11",
+      "file": "items/element06_i_11.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element06_i_11.webp"
+    },
+    {
+      "name": "백색보주",
+      "key": "litem007_88",
+      "file": "items/litem007_88.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/litem007_88.webp"
+    },
+    {
+      "name": "단단한 뼈조각",
+      "key": "litem011_83",
+      "file": "items/litem011_83.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/litem011_83.webp"
+    },
+    {
+      "name": "거북이등껍질",
+      "key": "element05_i_100",
+      "file": "items/element05_i_100.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element05_i_100.webp"
+    },
+    {
+      "name": "뜨거운 집게발",
+      "key": "element08_i_56",
+      "file": "items/element08_i_56.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element08_i_56.webp"
+    },
+    {
+      "name": "거대집게발",
+      "key": "element02_i_96",
+      "file": "items/element02_i_96.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element02_i_96.webp"
+    },
+    {
+      "name": "차가운 집게발",
+      "key": "element09_i_20",
+      "file": "items/element09_i_20.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element09_i_20.webp"
+    },
+    {
+      "name": "얼음결정",
+      "key": "element07_i_44",
+      "file": "items/element07_i_44.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element07_i_44.webp"
+    },
+    {
+      "name": "이무기의비늘",
+      "key": "element01_i_9",
+      "file": "items/element01_i_9.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element01_i_9.webp"
+    },
+    {
+      "name": "[신명] 주술 비법",
+      "key": "enchantrecipe01_i_4",
+      "file": "items/enchantrecipe01_i_4.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/enchantrecipe01_i_4.webp"
+    },
+    {
+      "name": "[개양] 주술 비법",
+      "key": "enchantrecipe01_i_14",
+      "file": "items/enchantrecipe01_i_14.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/enchantrecipe01_i_14.webp"
+    },
+    {
+      "name": "[요광] 주술 비법",
+      "key": "enchantrecipe01_i_15",
+      "file": "items/enchantrecipe01_i_15.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/enchantrecipe01_i_15.webp"
+    },
+    {
+      "name": "상급정수",
+      "key": "element03_i_60",
+      "file": "items/element03_i_60.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element03_i_60.webp"
+    },
+    {
+      "name": "결정조각(風)",
+      "key": "element03_i_0",
+      "file": "items/element03_i_0.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element03_i_0.webp"
+    },
+    {
+      "name": "결정조각(火)",
+      "key": "element03_i_1",
+      "file": "items/element03_i_1.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element03_i_1.webp"
+    },
+    {
+      "name": "결정조각(水)",
+      "key": "element03_i_2",
+      "file": "items/element03_i_2.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element03_i_2.webp"
+    },
+    {
+      "name": "선조의 영혼석(일본)",
+      "key": "element07_i_31",
+      "file": "items/element07_i_31.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element07_i_31.webp"
+    },
+    {
+      "name": "선조의 영혼석(중국)",
+      "key": "element07_i_30",
+      "file": "items/element07_i_30.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element07_i_30.webp"
+    },
+    {
+      "name": "선조의 영혼석(대만)",
+      "key": "element07_i_32",
+      "file": "items/element07_i_32.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element07_i_32.webp"
+    },
+    {
+      "name": "상급 보급상자(거래불가)",
+      "key": "element07_i_57",
+      "file": "items/element07_i_57.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element07_i_57.webp"
+    },
+    {
+      "name": "일반 보급상자(거래불가)",
+      "key": "element07_i_56",
+      "file": "items/element07_i_56.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element07_i_56.webp"
+    },
+    {
+      "name": "봉인된힘의파편",
+      "key": "element05_i_63",
+      "file": "items/element05_i_63.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/element05_i_63.webp"
+    },
+    {
+      "name": "황제의반지",
+      "key": "ring01_i_10",
+      "file": "items/ring01_i_10.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/ring01_i_10.webp"
+    },
+    {
+      "name": "태황의반지",
+      "key": "ring01_i_7",
+      "file": "items/ring01_i_7.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/ring01_i_7.webp"
+    },
+    {
+      "name": "신수의근원(주작)",
+      "key": "creature_i_9",
+      "file": "items/creature_i_9.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/creature_i_9.webp"
+    },
+    {
+      "name": "신수의근원(현무)",
+      "key": "creature_i_10",
+      "file": "items/creature_i_10.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/creature_i_10.webp"
+    },
+    {
+      "name": "신수의근원(백호)",
+      "key": "creature_i_8",
+      "file": "items/creature_i_8.png",
+      "size": [
+        60,
+        60
+      ],
+      "url": "https://gogolap.com/gersang/items/creature_i_8.webp"
     }
   ],
-  "negatives": []
+  "negatives": [
+    {
+      "name": "수문장",
+      "key": "gatekeeper_w_100",
+      "file": "negatives/gatekeeper_w_100.png",
+      "size": [
+        80,
+        115
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/gatekeeper_w_100.webp"
+    },
+    {
+      "name": "딱정벌레",
+      "key": "beetle_39",
+      "file": "negatives/beetle_39.png",
+      "size": [
+        44,
+        34
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/beetle_39.webp"
+    },
+    {
+      "name": "전사의혼",
+      "key": "warrior_h_100",
+      "file": "negatives/warrior_h_100.png",
+      "size": [
+        68,
+        82
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/warrior_h_100.webp"
+    },
+    {
+      "name": "벽독금강",
+      "key": "byukdogkumkang_63",
+      "file": "negatives/byukdogkumkang_63.png",
+      "size": [
+        43,
+        87
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/byukdogkumkang_63.webp"
+    },
+    {
+      "name": "아랑궁",
+      "key": "arang_f_n_0",
+      "file": "negatives/arang_f_n_0.png",
+      "size": [
+        147,
+        131
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/arang_f_n_0.webp"
+    },
+    {
+      "name": "아가수라",
+      "key": "hirana_84",
+      "file": "negatives/hirana_84.png",
+      "size": [
+        196,
+        143
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hirana_84.webp"
+    },
+    {
+      "name": "시바의 사제",
+      "key": "shiva_pawn_120",
+      "file": "negatives/shiva_pawn_120.png",
+      "size": [
+        113,
+        111
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/shiva_pawn_120.webp"
+    },
+    {
+      "name": "구미호",
+      "key": "fox_40",
+      "file": "negatives/fox_40.png",
+      "size": [
+        31,
+        49
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/fox_40.webp"
+    },
+    {
+      "name": "인드라",
+      "key": "indra_100",
+      "file": "negatives/indra_100.png",
+      "size": [
+        183,
+        259
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/indra_100.webp"
+    },
+    {
+      "name": "해적 선장",
+      "key": "piratecaptain_92",
+      "file": "negatives/piratecaptain_92.png",
+      "size": [
+        65,
+        62
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/piratecaptain_92.webp"
+    },
+    {
+      "name": "범증의혼(楚)",
+      "key": "burmjng_120",
+      "file": "negatives/burmjng_120.png",
+      "size": [
+        38,
+        77
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/burmjng_120.webp"
+    },
+    {
+      "name": "청제재금강",
+      "key": "chungjekumkang_47",
+      "file": "negatives/chungjekumkang_47.png",
+      "size": [
+        40,
+        80
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/chungjekumkang_47.webp"
+    },
+    {
+      "name": "염조",
+      "key": "fire_bird_70",
+      "file": "negatives/fire_bird_70.png",
+      "size": [
+        198,
+        188
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/fire_bird_70.webp"
+    },
+    {
+      "name": "어린비호",
+      "key": "biho_s_65",
+      "file": "negatives/biho_s_65.png",
+      "size": [
+        96,
+        88
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/biho_s_65.webp"
+    },
+    {
+      "name": "쥐며느리",
+      "key": "mon_myenul_50",
+      "file": "negatives/mon_myenul_50.png",
+      "size": [
+        39,
+        28
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mon_myenul_50.webp"
+    },
+    {
+      "name": "태초의 안",
+      "key": "risenightmare_n_0",
+      "file": "negatives/risenightmare_n_0.png",
+      "size": [
+        56,
+        124
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/risenightmare_n_0.webp"
+    },
+    {
+      "name": "설원랑의혼",
+      "key": "seolwon_80",
+      "file": "negatives/seolwon_80.png",
+      "size": [
+        71,
+        83
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/seolwon_80.webp"
+    },
+    {
+      "name": "망치마적",
+      "key": "mbandit2_61",
+      "file": "negatives/mbandit2_61.png",
+      "size": [
+        42,
+        72
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mbandit2_61.webp"
+    },
+    {
+      "name": "이사의사념(强)",
+      "key": "evil_112",
+      "file": "negatives/evil_112.png",
+      "size": [
+        51,
+        91
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/evil_112.webp"
+    },
+    {
+      "name": "독룡",
+      "key": "poisondragon_100",
+      "file": "negatives/poisondragon_100.png",
+      "size": [
+        321,
+        209
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/poisondragon_100.webp"
+    },
+    {
+      "name": "라마",
+      "key": "rama_m_80",
+      "file": "negatives/rama_m_80.png",
+      "size": [
+        92,
+        105
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/rama_m_80.webp"
+    },
+    {
+      "name": "꼬마산적",
+      "key": "bandit_40",
+      "file": "negatives/bandit_40.png",
+      "size": [
+        38,
+        50
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bandit_40.webp"
+    },
+    {
+      "name": "바유의혼",
+      "key": "bayou_n_0",
+      "file": "negatives/bayou_n_0.png",
+      "size": [
+        104,
+        108
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bayou_n_0.webp"
+    },
+    {
+      "name": "마오",
+      "key": "statueb_71",
+      "file": "negatives/statueb_71.png",
+      "size": [
+        36,
+        109
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/statueb_71.webp"
+    },
+    {
+      "name": "지국천왕",
+      "key": "jigukchun_m_80",
+      "file": "negatives/jigukchun_m_80.png",
+      "size": [
+        84,
+        128
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/jigukchun_m_80.webp"
+    },
+    {
+      "name": "한신의혼(强)",
+      "key": "hansin_67",
+      "file": "negatives/hansin_67.png",
+      "size": [
+        65,
+        81
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hansin_67.webp"
+    },
+    {
+      "name": "요술사령(强)",
+      "key": "magician_113",
+      "file": "negatives/magician_113.png",
+      "size": [
+        57,
+        84
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/magician_113.webp"
+    },
+    {
+      "name": "증장천왕",
+      "key": "jungjangchun_m_80",
+      "file": "negatives/jungjangchun_m_80.png",
+      "size": [
+        56,
+        125
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/jungjangchun_m_80.webp"
+    },
+    {
+      "name": "뇌우궁",
+      "key": "noeu_t_n_0",
+      "file": "negatives/noeu_t_n_0.png",
+      "size": [
+        199,
+        136
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/noeu_t_n_0.webp"
+    },
+    {
+      "name": "혼간지의혼",
+      "key": "honganji_g_80",
+      "file": "negatives/honganji_g_80.png",
+      "size": [
+        54,
+        92
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/honganji_g_80.webp"
+    },
+    {
+      "name": "백상회_변절자",
+      "key": "wg_betrayer_n_0",
+      "file": "negatives/wg_betrayer_n_0.png",
+      "size": [
+        87,
+        125
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/wg_betrayer_n_0.webp"
+    },
+    {
+      "name": "비충",
+      "key": "fly_100",
+      "file": "negatives/fly_100.png",
+      "size": [
+        110,
+        158
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/fly_100.webp"
+    },
+    {
+      "name": "묘아(雷)",
+      "key": "mua_t_70",
+      "file": "negatives/mua_t_70.png",
+      "size": [
+        66,
+        82
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mua_t_70.webp"
+    },
+    {
+      "name": "황수구금강",
+      "key": "hwangsukumkang_80",
+      "file": "negatives/hwangsukumkang_80.png",
+      "size": [
+        81,
+        100
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hwangsukumkang_80.webp"
+    },
+    {
+      "name": "암흑 육자명왕",
+      "key": "abyss_wind2_n_0",
+      "file": "negatives/abyss_wind2_n_0.png",
+      "size": [
+        229,
+        200
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/abyss_wind2_n_0.webp"
+    },
+    {
+      "name": "잠식된궁기",
+      "key": "goongi_abyss_w_n_0",
+      "file": "negatives/goongi_abyss_w_n_0.png",
+      "size": [
+        289,
+        309
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/goongi_abyss_w_n_0.webp"
+    },
+    {
+      "name": "암흑사냥개",
+      "key": "fdog_64",
+      "file": "negatives/fdog_64.png",
+      "size": [
+        94,
+        72
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/fdog_64.webp"
+    },
+    {
+      "name": "연노수의혼(楚)",
+      "key": "catapult1_70",
+      "file": "negatives/catapult1_70.png",
+      "size": [
+        93,
+        102
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/catapult1_70.webp"
+    },
+    {
+      "name": "적고적우두머리",
+      "key": "red_boss_n_0",
+      "file": "negatives/red_boss_n_0.png",
+      "size": [
+        179,
+        105
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/red_boss_n_0.webp"
+    },
+    {
+      "name": "진 이랑진군",
+      "key": "irang_w_r_n_0",
+      "file": "negatives/irang_w_r_n_0.png",
+      "size": [
+        249,
+        313
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/irang_w_r_n_0.webp"
+    },
+    {
+      "name": "사향고양이",
+      "key": "civet_100",
+      "file": "negatives/civet_100.png",
+      "size": [
+        61,
+        59
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/civet_100.webp"
+    },
+    {
+      "name": "정제재금강",
+      "key": "jungjekumkang_55",
+      "file": "negatives/jungjekumkang_55.png",
+      "size": [
+        93,
+        87
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/jungjekumkang_55.webp"
+    },
+    {
+      "name": "절망신",
+      "key": "despairwgod_n_0",
+      "file": "negatives/despairwgod_n_0.png",
+      "size": [
+        258,
+        218
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/despairwgod_n_0.webp"
+    },
+    {
+      "name": "나라심하",
+      "key": "narasimha_80",
+      "file": "negatives/narasimha_80.png",
+      "size": [
+        112,
+        102
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/narasimha_80.webp"
+    },
+    {
+      "name": "낭인_배객",
+      "key": "bae_w_100",
+      "file": "negatives/bae_w_100.png",
+      "size": [
+        189,
+        103
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bae_w_100.webp"
+    },
+    {
+      "name": "해마인",
+      "key": "seahorseman_76",
+      "file": "negatives/seahorseman_76.png",
+      "size": [
+        108,
+        120
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/seahorseman_76.webp"
+    },
+    {
+      "name": "차우차우",
+      "key": "chawoo_61",
+      "file": "negatives/chawoo_61.png",
+      "size": [
+        30,
+        31
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/chawoo_61.webp"
+    },
+    {
+      "name": "오염된수호룡(雷)",
+      "key": "evil_drangon_n_0",
+      "file": "negatives/evil_drangon_n_0.png",
+      "size": [
+        193,
+        174
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/evil_drangon_n_0.webp"
+    },
+    {
+      "name": "절망신(雷)",
+      "key": "despairtgod_n_0",
+      "file": "negatives/despairtgod_n_0.png",
+      "size": [
+        254,
+        229
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/despairtgod_n_0.webp"
+    },
+    {
+      "name": "구지모 저주술사",
+      "key": "gujimo_cursemagician_n_0",
+      "file": "negatives/gujimo_cursemagician_n_0.png",
+      "size": [
+        131,
+        152
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/gujimo_cursemagician_n_0.webp"
+    },
+    {
+      "name": "원로시녀",
+      "key": "senior_maid_48",
+      "file": "negatives/senior_maid_48.png",
+      "size": [
+        37,
+        71
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/senior_maid_48.webp"
+    },
+    {
+      "name": "원주민무당",
+      "key": "babarianshaman_99",
+      "file": "negatives/babarianshaman_99.png",
+      "size": [
+        32,
+        63
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/babarianshaman_99.webp"
+    },
+    {
+      "name": "화산의불꽃",
+      "key": "volcanoflame_113",
+      "file": "negatives/volcanoflame_113.png",
+      "size": [
+        52,
+        70
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/volcanoflame_113.webp"
+    },
+    {
+      "name": "거대수",
+      "key": "bigtree_104",
+      "file": "negatives/bigtree_104.png",
+      "size": [
+        63,
+        90
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bigtree_104.webp"
+    },
+    {
+      "name": "투척병_오문",
+      "key": "advancedomun_n_0",
+      "file": "negatives/advancedomun_n_0.png",
+      "size": [
+        151,
+        105
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/advancedomun_n_0.webp"
+    },
+    {
+      "name": "구영",
+      "key": "guyong_idle_000_0",
+      "file": "negatives/guyong_idle_000_0.png",
+      "size": [
+        438,
+        287
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/guyong_idle_000_0.webp"
+    },
+    {
+      "name": "흉노기마병",
+      "key": "hunshorse_52",
+      "file": "negatives/hunshorse_52.png",
+      "size": [
+        68,
+        99
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hunshorse_52.webp"
+    },
+    {
+      "name": "기문교호법",
+      "key": "cultkimoon_defence_cult_90",
+      "file": "negatives/cultkimoon_defence_cult_90.png",
+      "size": [
+        88,
+        83
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/cultkimoon_defence_cult_90.webp"
+    },
+    {
+      "name": "도사_필",
+      "key": "master_pil_n_0",
+      "file": "negatives/master_pil_n_0.png",
+      "size": [
+        181,
+        151
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/master_pil_n_0.webp"
+    },
+    {
+      "name": "잠식귀",
+      "key": "jamsic_a_n_0",
+      "file": "negatives/jamsic_a_n_0.png",
+      "size": [
+        128,
+        187
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/jamsic_a_n_0.webp"
+    },
+    {
+      "name": "멧돼지",
+      "key": "wildboar_40",
+      "file": "negatives/wildboar_40.png",
+      "size": [
+        59,
+        53
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/wildboar_40.webp"
+    },
+    {
+      "name": "말붕이(雷)",
+      "key": "lightning2_91",
+      "file": "negatives/lightning2_91.png",
+      "size": [
+        45,
+        49
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/lightning2_91.webp"
+    },
+    {
+      "name": "진보의 사문",
+      "key": "advancedsamun_n_0",
+      "file": "negatives/advancedsamun_n_0.png",
+      "size": [
+        56,
+        90
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/advancedsamun_n_0.webp"
+    },
+    {
+      "name": "티아메트",
+      "key": "tiamat_76",
+      "file": "negatives/tiamat_76.png",
+      "size": [
+        138,
+        137
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/tiamat_76.webp"
+    },
+    {
+      "name": "원망의 코끼리 주술사",
+      "key": "elephantm_n_0",
+      "file": "negatives/elephantm_n_0.png",
+      "size": [
+        98,
+        91
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/elephantm_n_0.webp"
+    },
+    {
+      "name": "빙조",
+      "key": "bingjo_55",
+      "file": "negatives/bingjo_55.png",
+      "size": [
+        153,
+        204
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bingjo_55.webp"
+    },
+    {
+      "name": "공작원_다령(雷)",
+      "key": "operative_dr_n_0",
+      "file": "negatives/operative_dr_n_0.png",
+      "size": [
+        72,
+        108
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/operative_dr_n_0.webp"
+    },
+    {
+      "name": "왕개미",
+      "key": "bigant_61",
+      "file": "negatives/bigant_61.png",
+      "size": [
+        111,
+        103
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bigant_61.webp"
+    },
+    {
+      "name": "나바타카바차(雷)",
+      "key": "nabata_t_n_0",
+      "file": "negatives/nabata_t_n_0.png",
+      "size": [
+        240,
+        236
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/nabata_t_n_0.webp"
+    },
+    {
+      "name": "황소인간",
+      "key": "cowman_65",
+      "file": "negatives/cowman_65.png",
+      "size": [
+        121,
+        114
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/cowman_65.webp"
+    },
+    {
+      "name": "야마와_야미",
+      "key": "yamayami_51",
+      "file": "negatives/yamayami_51.png",
+      "size": [
+        131,
+        174
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/yamayami_51.webp"
+    },
+    {
+      "name": "조국구",
+      "key": "jokuk_66",
+      "file": "negatives/jokuk_66.png",
+      "size": [
+        122,
+        110
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/jokuk_66.webp"
+    },
+    {
+      "name": "강철상병",
+      "key": "steelelephant_n_0",
+      "file": "negatives/steelelephant_n_0.png",
+      "size": [
+        176,
+        180
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/steelelephant_n_0.webp"
+    },
+    {
+      "name": "파오_진(眞)",
+      "key": "pao2_56",
+      "file": "negatives/pao2_56.png",
+      "size": [
+        132,
+        171
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/pao2_56.webp"
+    },
+    {
+      "name": "장량의혼(漢)",
+      "key": "jangliang_48",
+      "file": "negatives/jangliang_48.png",
+      "size": [
+        65,
+        75
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/jangliang_48.webp"
+    },
+    {
+      "name": "현천무녀 소혼",
+      "key": "hyunshaman_a_n_0",
+      "file": "negatives/hyunshaman_a_n_0.png",
+      "size": [
+        145,
+        214
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hyunshaman_a_n_0.webp"
+    },
+    {
+      "name": "물나방",
+      "key": "moth_w_81",
+      "file": "negatives/moth_w_81.png",
+      "size": [
+        102,
+        161
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/moth_w_81.webp"
+    },
+    {
+      "name": "유령무녀",
+      "key": "ghostfemaleshaman_49",
+      "file": "negatives/ghostfemaleshaman_49.png",
+      "size": [
+        91,
+        98
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/ghostfemaleshaman_49.webp"
+    },
+    {
+      "name": "산",
+      "key": "mon_san_180",
+      "file": "negatives/mon_san_180.png",
+      "size": [
+        82,
+        116
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mon_san_180.webp"
+    },
+    {
+      "name": "광우",
+      "key": "madbull_63",
+      "file": "negatives/madbull_63.png",
+      "size": [
+        75,
+        105
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/madbull_63.webp"
+    },
+    {
+      "name": "사막거미",
+      "key": "spider_d_55",
+      "file": "negatives/spider_d_55.png",
+      "size": [
+        108,
+        84
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/spider_d_55.webp"
+    },
+    {
+      "name": "도사_방(雷)",
+      "key": "master_bang_n_0",
+      "file": "negatives/master_bang_n_0.png",
+      "size": [
+        81,
+        110
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/master_bang_n_0.webp"
+    },
+    {
+      "name": "문지기",
+      "key": "gatekeeper_54",
+      "file": "negatives/gatekeeper_54.png",
+      "size": [
+        53,
+        116
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/gatekeeper_54.webp"
+    },
+    {
+      "name": "암령의 구지모 고주",
+      "key": "dark_gujimo_employer_n_0",
+      "file": "negatives/dark_gujimo_employer_n_0.png",
+      "size": [
+        110,
+        123
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/dark_gujimo_employer_n_0.webp"
+    },
+    {
+      "name": "돌하루방",
+      "key": "harubang_65",
+      "file": "negatives/harubang_65.png",
+      "size": [
+        107,
+        109
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/harubang_65.webp"
+    },
+    {
+      "name": "구지모 시녀장",
+      "key": "guzimo_sister_40",
+      "file": "negatives/guzimo_sister_40.png",
+      "size": [
+        136,
+        117
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/guzimo_sister_40.webp"
+    },
+    {
+      "name": "모래거인",
+      "key": "sand_d_80",
+      "file": "negatives/sand_d_80.png",
+      "size": [
+        88,
+        132
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/sand_d_80.webp"
+    },
+    {
+      "name": "염귀",
+      "key": "yumgui_73",
+      "file": "negatives/yumgui_73.png",
+      "size": [
+        87,
+        126
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/yumgui_73.webp"
+    },
+    {
+      "name": "눈코끼리",
+      "key": "mammoth_110",
+      "file": "negatives/mammoth_110.png",
+      "size": [
+        146,
+        133
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mammoth_110.webp"
+    },
+    {
+      "name": "변질된 수호령_괴웅",
+      "key": "dark_bear_n_0",
+      "file": "negatives/dark_bear_n_0.png",
+      "size": [
+        89,
+        108
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/dark_bear_n_0.webp"
+    },
+    {
+      "name": "사막구렁이(雷)",
+      "key": "snake_d_120",
+      "file": "negatives/snake_d_120.png",
+      "size": [
+        130,
+        141
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/snake_d_120.webp"
+    },
+    {
+      "name": "챠우의_잔재",
+      "key": "chow_remnant_n_0",
+      "file": "negatives/chow_remnant_n_0.png",
+      "size": [
+        211,
+        194
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/chow_remnant_n_0.webp"
+    },
+    {
+      "name": "흑호",
+      "key": "blackt_w_100",
+      "file": "negatives/blackt_w_100.png",
+      "size": [
+        109,
+        96
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/blackt_w_100.webp"
+    },
+    {
+      "name": "백영록(弱)",
+      "key": "baegyeong_n_0",
+      "file": "negatives/baegyeong_n_0.png",
+      "size": [
+        142,
+        177
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/baegyeong_n_0.webp"
+    },
+    {
+      "name": "원로_허당",
+      "key": "her_w_80",
+      "file": "negatives/her_w_80.png",
+      "size": [
+        90,
+        152
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/her_w_80.webp"
+    },
+    {
+      "name": "청룡단원_주태(雷)",
+      "key": "bd_jutae_n_0",
+      "file": "negatives/bd_jutae_n_0.png",
+      "size": [
+        102,
+        103
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bd_jutae_n_0.webp"
+    },
+    {
+      "name": "비호",
+      "key": "agiletiger_135",
+      "file": "negatives/agiletiger_135.png",
+      "size": [
+        231,
+        197
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/agiletiger_135.webp"
+    },
+    {
+      "name": "얼음해골병사",
+      "key": "iceskeleton_s_52",
+      "file": "negatives/iceskeleton_s_52.png",
+      "size": [
+        35,
+        73
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/iceskeleton_s_52.webp"
+    },
+    {
+      "name": "마카라",
+      "key": "makara_n_0",
+      "file": "negatives/makara_n_0.png",
+      "size": [
+        105,
+        71
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/makara_n_0.webp"
+    },
+    {
+      "name": "거구귀(雷)",
+      "key": "bigmouth_oni_n_0",
+      "file": "negatives/bigmouth_oni_n_0.png",
+      "size": [
+        89,
+        107
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bigmouth_oni_n_0.webp"
+    },
+    {
+      "name": "해저왕",
+      "key": "seaking_185",
+      "file": "negatives/seaking_185.png",
+      "size": [
+        103,
+        122
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/seaking_185.webp"
+    },
+    {
+      "name": "킹구",
+      "key": "kingu_100",
+      "file": "negatives/kingu_100.png",
+      "size": [
+        133,
+        115
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/kingu_100.webp"
+    },
+    {
+      "name": "타메토모의혼",
+      "key": "tametomo_g_70",
+      "file": "negatives/tametomo_g_70.png",
+      "size": [
+        86,
+        117
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/tametomo_g_70.webp"
+    },
+    {
+      "name": "괴조귀(弱)",
+      "key": "gwaejo_fiend_n_0",
+      "file": "negatives/gwaejo_fiend_n_0.png",
+      "size": [
+        135,
+        213
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/gwaejo_fiend_n_0.webp"
+    },
+    {
+      "name": "식인목",
+      "key": "treeman_58",
+      "file": "negatives/treeman_58.png",
+      "size": [
+        108,
+        156
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/treeman_58.webp"
+    },
+    {
+      "name": "수호궁사_태진(雷)",
+      "key": "taejin_t_80",
+      "file": "negatives/taejin_t_80.png",
+      "size": [
+        57,
+        118
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/taejin_t_80.webp"
+    },
+    {
+      "name": "성봉신장",
+      "key": "sungbong_n_0",
+      "file": "negatives/sungbong_n_0.png",
+      "size": [
+        123,
+        125
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/sungbong_n_0.webp"
+    },
+    {
+      "name": "루드라의혼",
+      "key": "rudra_120",
+      "file": "negatives/rudra_120.png",
+      "size": [
+        111,
+        162
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/rudra_120.webp"
+    },
+    {
+      "name": "늪지감시자",
+      "key": "swampwatch_80",
+      "file": "negatives/swampwatch_80.png",
+      "size": [
+        85,
+        157
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/swampwatch_80.webp"
+    },
+    {
+      "name": "잠식된유방",
+      "key": "liubang_abyss_w_n_0",
+      "file": "negatives/liubang_abyss_w_n_0.png",
+      "size": [
+        210,
+        258
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/liubang_abyss_w_n_0.webp"
+    },
+    {
+      "name": "현진_장로",
+      "key": "hj_elder_n_0",
+      "file": "negatives/hj_elder_n_0.png",
+      "size": [
+        75,
+        117
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hj_elder_n_0.webp"
+    },
+    {
+      "name": "킨따로의혼",
+      "key": "kin_g_53",
+      "file": "negatives/kin_g_53.png",
+      "size": [
+        82,
+        94
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/kin_g_53.webp"
+    },
+    {
+      "name": "새끼송어인",
+      "key": "fishman_s_54",
+      "file": "negatives/fishman_s_54.png",
+      "size": [
+        133,
+        85
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/fishman_s_54.webp"
+    },
+    {
+      "name": "태초의 혼돈(雷)",
+      "key": "ancinet_hondon_n_0",
+      "file": "negatives/ancinet_hondon_n_0.png",
+      "size": [
+        185,
+        193
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/ancinet_hondon_n_0.webp"
+    },
+    {
+      "name": "무관의혼",
+      "key": "worriorghost_110",
+      "file": "negatives/worriorghost_110.png",
+      "size": [
+        70,
+        103
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/worriorghost_110.webp"
+    },
+    {
+      "name": "소환지조",
+      "key": "call_paper_bird_63",
+      "file": "negatives/call_paper_bird_63.png",
+      "size": [
+        94,
+        83
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/call_paper_bird_63.webp"
+    },
+    {
+      "name": "거미요괴",
+      "key": "widow_93",
+      "file": "negatives/widow_93.png",
+      "size": [
+        67,
+        56
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/widow_93.webp"
+    },
+    {
+      "name": "유령코끼리",
+      "key": "ghostelephant_100",
+      "file": "negatives/ghostelephant_100.png",
+      "size": [
+        123,
+        135
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/ghostelephant_100.webp"
+    },
+    {
+      "name": "독수의_구지령",
+      "key": "gjr_water_n_0",
+      "file": "negatives/gjr_water_n_0.png",
+      "size": [
+        175,
+        218
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/gjr_water_n_0.webp"
+    },
+    {
+      "name": "사슴",
+      "key": "deer_online_56",
+      "file": "negatives/deer_online_56.png",
+      "size": [
+        41,
+        63
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/deer_online_56.webp"
+    },
+    {
+      "name": "잠식된 백록궁",
+      "key": "baekrok_d_n_0",
+      "file": "negatives/baekrok_d_n_0.png",
+      "size": [
+        130,
+        190
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/baekrok_d_n_0.webp"
+    },
+    {
+      "name": "나문신장",
+      "key": "namun_f_n_0",
+      "file": "negatives/namun_f_n_0.png",
+      "size": [
+        102,
+        98
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/namun_f_n_0.webp"
+    },
+    {
+      "name": "심안_조",
+      "key": "eye_joe_100",
+      "file": "negatives/eye_joe_100.png",
+      "size": [
+        56,
+        118
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/eye_joe_100.webp"
+    },
+    {
+      "name": "우태",
+      "key": "utae_185",
+      "file": "negatives/utae_185.png",
+      "size": [
+        94,
+        94
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/utae_185.webp"
+    },
+    {
+      "name": "문다",
+      "key": "munda_53",
+      "file": "negatives/munda_53.png",
+      "size": [
+        64,
+        120
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/munda_53.webp"
+    },
+    {
+      "name": "타르바간",
+      "key": "tarbagan_80",
+      "file": "negatives/tarbagan_80.png",
+      "size": [
+        62,
+        105
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/tarbagan_80.webp"
+    },
+    {
+      "name": "고획조新",
+      "key": "gohoekjo2-1_111",
+      "file": "negatives/gohoekjo2-1_111.png",
+      "size": [
+        49,
+        85
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/gohoekjo2-1_111.webp"
+    },
+    {
+      "name": "맹호의혼",
+      "key": "maengho_g_120",
+      "file": "negatives/maengho_g_120.png",
+      "size": [
+        99,
+        132
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/maengho_g_120.webp"
+    },
+    {
+      "name": "염마의진묵",
+      "key": "jinmuk_f_n_0",
+      "file": "negatives/jinmuk_f_n_0.png",
+      "size": [
+        202,
+        168
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/jinmuk_f_n_0.webp"
+    },
+    {
+      "name": "맹공",
+      "key": "mon_locust_91",
+      "file": "negatives/mon_locust_91.png",
+      "size": [
+        136,
+        129
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mon_locust_91.webp"
+    },
+    {
+      "name": "독각귀",
+      "key": "doki_90",
+      "file": "negatives/doki_90.png",
+      "size": [
+        81,
+        122
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/doki_90.webp"
+    },
+    {
+      "name": "살무사",
+      "key": "viper_49",
+      "file": "negatives/viper_49.png",
+      "size": [
+        55,
+        33
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/viper_49.webp"
+    },
+    {
+      "name": "궁수산적",
+      "key": "bandit4_48",
+      "file": "negatives/bandit4_48.png",
+      "size": [
+        33,
+        64
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/bandit4_48.webp"
+    },
+    {
+      "name": "하누만의 사제",
+      "key": "hanumat_pawn_60",
+      "file": "negatives/hanumat_pawn_60.png",
+      "size": [
+        76,
+        145
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hanumat_pawn_60.webp"
+    },
+    {
+      "name": "도사_심(雷)",
+      "key": "master_sim_n_0",
+      "file": "negatives/master_sim_n_0.png",
+      "size": [
+        66,
+        108
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/master_sim_n_0.webp"
+    },
+    {
+      "name": "원망의 코끼리 전사",
+      "key": "elephant_w_n_0",
+      "file": "negatives/elephant_w_n_0.png",
+      "size": [
+        101,
+        86
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/elephant_w_n_0.webp"
+    },
+    {
+      "name": "냉혹한 궁기",
+      "key": "goongi4_50",
+      "file": "negatives/goongi4_50.png",
+      "size": [
+        152,
+        196
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/goongi4_50.webp"
+    },
+    {
+      "name": "어린화룡",
+      "key": "firedragon_s_72",
+      "file": "negatives/firedragon_s_72.png",
+      "size": [
+        116,
+        116
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/firedragon_s_72.webp"
+    },
+    {
+      "name": "해적",
+      "key": "pirates_52",
+      "file": "negatives/pirates_52.png",
+      "size": [
+        42,
+        51
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/pirates_52.webp"
+    },
+    {
+      "name": "미생의혼(强)",
+      "key": "misaeng_75",
+      "file": "negatives/misaeng_75.png",
+      "size": [
+        51,
+        85
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/misaeng_75.webp"
+    },
+    {
+      "name": "현천무녀 소혼",
+      "key": "hyunshaman_f_n_0",
+      "file": "negatives/hyunshaman_f_n_0.png",
+      "size": [
+        147,
+        214
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/hyunshaman_f_n_0.webp"
+    },
+    {
+      "name": "암시장척후병",
+      "key": "cheokhu_w_n_0",
+      "file": "negatives/cheokhu_w_n_0.png",
+      "size": [
+        173,
+        115
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/cheokhu_w_n_0.webp"
+    },
+    {
+      "name": "암시장수행자",
+      "key": "suhaeng_a_n_0",
+      "file": "negatives/suhaeng_a_n_0.png",
+      "size": [
+        139,
+        111
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/suhaeng_a_n_0.webp"
+    },
+    {
+      "name": "무간귀",
+      "key": "mukangui_n1_0_0",
+      "file": "negatives/mukangui_n1_0_0.png",
+      "size": [
+        380,
+        285
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mukangui_n1_0_0.webp"
+    },
+    {
+      "name": "벼락의천구(雷)",
+      "key": "lightning_skynine_n_0",
+      "file": "negatives/lightning_skynine_n_0.png",
+      "size": [
+        144,
+        136
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/lightning_skynine_n_0.webp"
+    },
+    {
+      "name": "불량토끼",
+      "key": "mon_rabbit_50",
+      "file": "negatives/mon_rabbit_50.png",
+      "size": [
+        35,
+        41
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mon_rabbit_50.webp"
+    },
+    {
+      "name": "원주민술사",
+      "key": "oldshaman_46",
+      "file": "negatives/oldshaman_46.png",
+      "size": [
+        25,
+        51
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/oldshaman_46.webp"
+    },
+    {
+      "name": "괴물덩굴손",
+      "key": "runnerhand_68",
+      "file": "negatives/runnerhand_68.png",
+      "size": [
+        70,
+        50
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/runnerhand_68.webp"
+    },
+    {
+      "name": "화염거인",
+      "key": "firegaint_140",
+      "file": "negatives/firegaint_140.png",
+      "size": [
+        140,
+        166
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/firegaint_140.webp"
+    },
+    {
+      "name": "도사_루",
+      "key": "master_roo_n_0",
+      "file": "negatives/master_roo_n_0.png",
+      "size": [
+        72,
+        80
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/master_roo_n_0.webp"
+    },
+    {
+      "name": "진묘수",
+      "key": "zinmyosu_a_n_0",
+      "file": "negatives/zinmyosu_a_n_0.png",
+      "size": [
+        205,
+        150
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/zinmyosu_a_n_0.webp"
+    },
+    {
+      "name": "샤오링의사념",
+      "key": "sanyeo_transform_180",
+      "file": "negatives/sanyeo_transform_180.png",
+      "size": [
+        99,
+        142
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/sanyeo_transform_180.webp"
+    },
+    {
+      "name": "야만검병",
+      "key": "wildsword_120",
+      "file": "negatives/wildsword_120.png",
+      "size": [
+        78,
+        87
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/wildsword_120.webp"
+    },
+    {
+      "name": "주술사_식이",
+      "key": "spell_w_100",
+      "file": "negatives/spell_w_100.png",
+      "size": [
+        50,
+        91
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/spell_w_100.webp"
+    },
+    {
+      "name": "코브라",
+      "key": "cobra_51",
+      "file": "negatives/cobra_51.png",
+      "size": [
+        52,
+        33
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/cobra_51.webp"
+    },
+    {
+      "name": "오운_태(雷)",
+      "key": "lord_bokhee_n_0",
+      "file": "negatives/lord_bokhee_n_0.png",
+      "size": [
+        101,
+        152
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/lord_bokhee_n_0.webp"
+    },
+    {
+      "name": "잠식된미실(雷)",
+      "key": "misil_abyss_t_n_0",
+      "file": "negatives/misil_abyss_t_n_0.png",
+      "size": [
+        149,
+        177
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/misil_abyss_t_n_0.webp"
+    },
+    {
+      "name": "백정수금강",
+      "key": "backjungkumkang_80",
+      "file": "negatives/backjungkumkang_80.png",
+      "size": [
+        55,
+        84
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/backjungkumkang_80.webp"
+    },
+    {
+      "name": "오운_소",
+      "key": "lord_kumchun_n_0",
+      "file": "negatives/lord_kumchun_n_0.png",
+      "size": [
+        111,
+        134
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/lord_kumchun_n_0.webp"
+    },
+    {
+      "name": "마츠야",
+      "key": "matsya_80",
+      "file": "negatives/matsya_80.png",
+      "size": [
+        88,
+        120
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/matsya_80.webp"
+    },
+    {
+      "name": "록아(雷)",
+      "key": "roka_n_0",
+      "file": "negatives/roka_n_0.png",
+      "size": [
+        154,
+        208
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/roka_n_0.webp"
+    },
+    {
+      "name": "수상한 도깨비",
+      "key": "goblin_g_n_0",
+      "file": "negatives/goblin_g_n_0.png",
+      "size": [
+        123,
+        142
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/goblin_g_n_0.webp"
+    },
+    {
+      "name": "파갑귀",
+      "key": "wind2_fiend_n_0",
+      "file": "negatives/wind2_fiend_n_0.png",
+      "size": [
+        170,
+        150
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/wind2_fiend_n_0.webp"
+    },
+    {
+      "name": "기문광신도",
+      "key": "cultkimoon_fanatic_67",
+      "file": "negatives/cultkimoon_fanatic_67.png",
+      "size": [
+        50,
+        55
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/cultkimoon_fanatic_67.webp"
+    },
+    {
+      "name": "암흑명왕",
+      "key": "abyss_wind_n_0",
+      "file": "negatives/abyss_wind_n_0.png",
+      "size": [
+        192,
+        161
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/abyss_wind_n_0.webp"
+    },
+    {
+      "name": "외눈박이",
+      "key": "oneeyed_56",
+      "file": "negatives/oneeyed_56.png",
+      "size": [
+        85,
+        117
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/oneeyed_56.webp"
+    },
+    {
+      "name": "도사_성",
+      "key": "master_sung_n_0",
+      "file": "negatives/master_sung_n_0.png",
+      "size": [
+        171,
+        119
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/master_sung_n_0.webp"
+    },
+    {
+      "name": "박수무당",
+      "key": "shaman_man_n_0",
+      "file": "negatives/shaman_man_n_0.png",
+      "size": [
+        66,
+        97
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/shaman_man_n_0.webp"
+    },
+    {
+      "name": "칸의주술사(雷)",
+      "key": "khan_m_80",
+      "file": "negatives/khan_m_80.png",
+      "size": [
+        44,
+        101
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/khan_m_80.webp"
+    },
+    {
+      "name": "처녀귀신",
+      "key": "koreanghost_52",
+      "file": "negatives/koreanghost_52.png",
+      "size": [
+        62,
+        63
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/koreanghost_52.webp"
+    },
+    {
+      "name": "영수_두",
+      "key": "master_doo_n_0",
+      "file": "negatives/master_doo_n_0.png",
+      "size": [
+        145,
+        117
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/master_doo_n_0.webp"
+    },
+    {
+      "name": "일각비사",
+      "key": "horn_snake_n_0",
+      "file": "negatives/horn_snake_n_0.png",
+      "size": [
+        192,
+        153
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/horn_snake_n_0.webp"
+    },
+    {
+      "name": "구지모마녀",
+      "key": "guwitch_99",
+      "file": "negatives/guwitch_99.png",
+      "size": [
+        54,
+        75
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/guwitch_99.webp"
+    },
+    {
+      "name": "이랑진군(雷)",
+      "key": "irang_t_n_0",
+      "file": "negatives/irang_t_n_0.png",
+      "size": [
+        243,
+        261
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/irang_t_n_0.webp"
+    },
+    {
+      "name": "원망신",
+      "key": "resentfgod_n_0",
+      "file": "negatives/resentfgod_n_0.png",
+      "size": [
+        158,
+        193
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/resentfgod_n_0.webp"
+    },
+    {
+      "name": "가네샤의 사제",
+      "key": "ganesha_pawn_120",
+      "file": "negatives/ganesha_pawn_120.png",
+      "size": [
+        99,
+        128
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/ganesha_pawn_120.webp"
+    },
+    {
+      "name": "샤오링",
+      "key": "sanyeo_80",
+      "file": "negatives/sanyeo_80.png",
+      "size": [
+        61,
+        84
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/sanyeo_80.webp"
+    },
+    {
+      "name": "인도표범",
+      "key": "india_leopard_100",
+      "file": "negatives/india_leopard_100.png",
+      "size": [
+        80,
+        63
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/india_leopard_100.webp"
+    },
+    {
+      "name": "호위검병_후",
+      "key": "swordman_hu_86",
+      "file": "negatives/swordman_hu_86.png",
+      "size": [
+        60,
+        87
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/swordman_hu_86.webp"
+    },
+    {
+      "name": "악선궁",
+      "key": "akseon_w_n_0",
+      "file": "negatives/akseon_w_n_0.png",
+      "size": [
+        225,
+        197
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/akseon_w_n_0.webp"
+    },
+    {
+      "name": "주작단원_린",
+      "key": "jujak_rin_n_0",
+      "file": "negatives/jujak_rin_n_0.png",
+      "size": [
+        112,
+        114
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/jujak_rin_n_0.webp"
+    },
+    {
+      "name": "도사_삼",
+      "key": "master_sam_n_0",
+      "file": "negatives/master_sam_n_0.png",
+      "size": [
+        82,
+        122
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/master_sam_n_0.webp"
+    },
+    {
+      "name": "도사_각(雷)",
+      "key": "master_gak_n_0",
+      "file": "negatives/master_gak_n_0.png",
+      "size": [
+        137,
+        114
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/master_gak_n_0.webp"
+    },
+    {
+      "name": "구지모 대장로",
+      "key": "guzimo_elder_n_0",
+      "file": "negatives/guzimo_elder_n_0.png",
+      "size": [
+        159,
+        148
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/guzimo_elder_n_0.webp"
+    },
+    {
+      "name": "변질된 마적두목",
+      "key": "mbandit5_63",
+      "file": "negatives/mbandit5_63.png",
+      "size": [
+        91,
+        98
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/mbandit5_63.webp"
+    },
+    {
+      "name": "천구",
+      "key": "skynine_115",
+      "file": "negatives/skynine_115.png",
+      "size": [
+        104,
+        122
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/skynine_115.webp"
+    },
+    {
+      "name": "해마",
+      "key": "seahorse_50",
+      "file": "negatives/seahorse_50.png",
+      "size": [
+        46,
+        135
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/seahorse_50.webp"
+    },
+    {
+      "name": "천옥 천망수",
+      "key": "cheonmang_n_0",
+      "file": "negatives/cheonmang_n_0.png",
+      "size": [
+        208,
+        122
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/cheonmang_n_0.webp"
+    },
+    {
+      "name": "아크샤",
+      "key": "aksha_140",
+      "file": "negatives/aksha_140.png",
+      "size": [
+        107,
+        141
+      ],
+      "url": "https://gogolap.com/gersang/characters/fullwait/aksha_140.webp"
+    }
+  ]
 }
