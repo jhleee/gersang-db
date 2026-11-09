@@ -455,7 +455,7 @@ def write_items(monsters):
         lines.append('| 아이템 | 드랍 몬스터 (출몰지) |')
         lines.append('|---|---|')
         for it in hits:
-            ms = sorted(items[it], key=lambda x: x[1])
+            ms = sorted(items[it], key=lambda x: (x[1], x[0]))
             cell = ', '.join(f'{n}({d})' for n, d in ms)
             lines.append(f'| {it} | {cell} |')
         lines.append('')
@@ -465,7 +465,7 @@ def write_items(monsters):
     lines.append('| 아이템 | 드랍 몬스터(출몰지) |')
     lines.append('|---|---|')
     for it in sorted(items):
-        ms = sorted(items[it], key=lambda x: x[1])
+        ms = sorted(items[it], key=lambda x: (x[1], x[0]))
         cell = ', '.join(f'{n}({d})' for n, d in ms)
         lines.append(f'| {it} | {cell} |')
     lines.append('')
@@ -474,7 +474,7 @@ def write_items(monsters):
     open(path, 'w', encoding='utf-8').write('\n'.join(lines) + '\n')
     print('wrote', path, 'items', len(items))
     # json 색인
-    j = {it: [{'name': n, 'dungeon': d} for n, d in sorted(items[it], key=lambda x: x[1])] for it in sorted(items)}
+    j = {it: [{'name': n, 'dungeon': d} for n, d in sorted(items[it], key=lambda x: (x[1], x[0]))] for it in sorted(items)}
     json.dump(j, open(os.path.join(DATA, 'drops_index.json'), 'w', encoding='utf-8'),
               ensure_ascii=False, indent=1)
 
