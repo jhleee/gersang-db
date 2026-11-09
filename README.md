@@ -46,7 +46,8 @@ gersang-db/
 ├── notebooks/
 │   └── gersang_yolo_training.ipynb  ← Colab 원클릭 학습 노트북
 ├── models/
-│   └── gersang_yolov8n_synth_baseline.pt  ← 합성 데이터로 학습한 기준 가중치
+│   ├── gersang_yolov8n_synth_baseline.pt    ← 합성 데이터로 학습한 기준 가중치
+│   └── gersang_yolov8n_synth_baseline.onnx  ← 같은 모델의 ONNX(fp32, 640) — 앱/실시간 추론용
 ├── docs/
 │   └── yolo_report.md            ← 데이터셋 구축·실화면 검수 리포트
 └── tools/
@@ -105,6 +106,9 @@ yolo detect predict model=runs/detect/train/weights/best.pt source=test_images c
 | 염라대왕 | 확보한 염라존 프레임이 전부 스킬 이펙트/사망 장면이라 **판정 보류** |
 
 > 학습 데이터는 합성이라 **실사냥 화면을 라벨링해 val에 섞는 것**이 가장 효과가 큰 다음 단계다.
+>
+> 동봉한 `models/gersang_yolov8n_synth_baseline.pt` 로 바로 추론해 볼 수 있다:
+> `yolo detect predict model=models/gersang_yolov8n_synth_baseline.pt source=test_images conf=0.25 save=True`
 
 ---
 

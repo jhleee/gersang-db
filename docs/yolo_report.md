@@ -96,6 +96,7 @@ GPU가 없는 환경에서 파이프라인 자체를 검증하려고 CPU로 학�
 (`models/gersang_yolov8n_synth_baseline.pt`)
 
 - 구성: YOLOv8n, imgsz 320, batch 4, CPU 2코어, 누적 21 epoch(15 → 6 → 6 미세조정)
+- ONNX 변환 검증 완료: `models/gersang_yolov8n_synth_baseline.onnx` (imgsz 640, opset 12, simplify, fp32 12.8MB)
 - 합성 val 200장 결과
 
 | 지표 | 값 |
