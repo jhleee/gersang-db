@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>거상 DB & 육의전 시세 도감 | Gersang Market Viewer</title>
+  <meta name="description" content="천하제일상 거상 몬스터, 던전, 드랍 아이템 역색인 및 비호/전 서버 육의전 실시간 시세 조회 도감">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation & Brand Header -->
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">🐉</div>
+        <div class="brand-text">
+          <h1>거상 DB & 육의전 시세</h1>
+          <p>Gersang Market & Drops Encyclopedia</p>
+        </div>
+      </div>
+
+      <div class="server-selector-wrap">
+        <label for="globalServerSelect">🌐 기준 서버:</label>
+        <select id="globalServerSelect" class="server-select">
+          <!-- Populated by JS -->
+        </select>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="items">
+        <span>💎</span> 아이템 & 시세
+      </button>
+      <button class="tab-btn" data-tab="monsters">
+        <span>🐉</span> 몬스터 도감
+      </button>
+      <button class="tab-btn" data-tab="guide">
+        <span>⚡</span> 190 뉴비 추천 사냥터
+      </button>
+      <button class="tab-btn" data-tab="dungeons">
+        <span>🗺️</span> 던전 가이드
+      </button>
+      <button class="tab-btn" data-tab="calculator">
+        <span>⚔️</span> 저항·데미지 계산기
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Body -->
+  <main>
+    <!-- Stats Banner -->
+    <div class="stats-banner">
+      <div class="stat-item">
+        현재 선택: <span id="selectedServerBadge" class="badge badge-gold">비호 서버</span>
+      </div>
+      <div class="stat-item">
+        총 몬스터: <strong id="statMonstersCount">906종</strong>
+      </div>
+      <div class="stat-item">
+        드랍 아이템: <strong id="statItemsCount">1,687종</strong>
+      </div>
+      <div class="stat-item">
+        수록 던전: <strong id="statDungeonsCount">75곳</strong>
+      </div>
+      <div class="stat-item">
+        시세 기준: <span style="color:var(--accent-cyan);">거리니닷컴 실시간 연동</span>
+      </div>
+    </div>
+
+    <!-- Tab 1: Items & Prices -->
+    <section id="tab-items" class="tab-pane active">
+      <div class="search-bar-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="itemSearchInput" class="search-input-box" placeholder="아이템 이름 검색 (예: 유명계석, 흉수의혼, 환수의혼, 생명의정수, 뇌정석)...">
+        <div class="filter-tags">
+          <button class="filter-btn item-filter-btn active" data-category="all">전체 아이템</button>
+          <button class="filter-btn item-filter-btn" data-category="인기 파밍템">⭐ 인기 파밍템</button>
+          <button class="filter-btn item-filter-btn" data-category="환수/흉수/신수 재료">🐲 환수·흉수·신수</button>
+          <button class="filter-btn item-filter-btn" data-category="정수/속성석">✨ 정수·속성석</button>
+          <button class="filter-btn item-filter-btn" data-category="주술비법/비늘">📜 주술비법·비늘</button>
+          <button class="filter-btn item-filter-btn" data-category="장비/유물">🛡️ 장비·유물</button>
+        </div>
+      </div>
+
+      <div id="itemsContainer" class="card-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Tab 2: Monsters Encyclopedia -->
+    <section id="tab-monsters" class="tab-pane">
+      <div class="search-bar-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="monsterSearchInput" class="search-input-box" placeholder="몬스터 이름 또는 출몰 던전 검색 (예: 이무기, 어린도철, 누에, 얼음게)...">
+        <div class="filter-tags">
+          <button class="filter-btn elem-filter-btn active" data-elem="all">전체 속성</button>
+          <button class="filter-btn elem-filter-btn" data-elem="불">🔥 불(火)</button>
+          <button class="filter-btn elem-filter-btn" data-elem="물">💧 물(水)</button>
+          <button class="filter-btn elem-filter-btn" data-elem="바람">🌪️ 바람(風)</button>
+          <button class="filter-btn elem-filter-btn" data-elem="뇌전">⚡ 뇌전(雷)</button>
+          <button class="filter-btn elem-filter-btn" data-elem="땅">⛰️ 땅(地)</button>
+          <button class="filter-btn elem-filter-btn" data-elem="무">⚪ 무속성</button>
+        </div>
+      </div>
+
+      <div id="monstersContainer" class="card-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Tab 3: 190 Newbie Guide -->
+    <section id="tab-guide" class="tab-pane">
+      <div id="newbieGuideContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Tab 4: Dungeons Directory -->
+    <section id="tab-dungeons" class="tab-pane">
+      <div id="dungeonsContainer" class="card-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Tab 5: Combat & Damage Calculator -->
+    <section id="tab-calculator" class="tab-pane">
+      <div class="calc-card">
+        <h2 style="font-size:1.3rem; margin-bottom: 0.5rem; color: #60a5fa;">⚔️ 저항 감소 및 실효 데미지 증폭 계산기</h2>
+        <p style="font-size:0.85rem; color: var(--text-secondary);">
+          거상의 저항 공식은 <code>피해 감소율(%) = 0.16 × 저항 + 57% (상한 98.6%)</code> 입니다.<br>
+          몬스터의 저항과 주박청음(마법) 또는 허영갑주(타격) 디버프 수치를 입력하여 실효 데미지가 몇 배 증가하는지 계산해 보세요.
+        </p>
+
+        <div class="calc-grid">
+          <div class="calc-input-group">
+            <label for="calcTargetRes">🎯 몬스터 기본 저항 (%)</label>
+            <input type="number" id="calcTargetRes" class="calc-input" value="235" min="0" max="400">
+            <small style="color:var(--text-muted);">예: 어린도철 235%, 얼음게 245%, 거얼 260%</small>
+          </div>
+          <div class="calc-input-group">
+            <label for="calcDebuffPercent">📉 저항 깎기 수치 (주박청음/허영갑주 %)</label>
+            <input type="number" id="calcDebuffPercent" class="calc-input" value="45" min="0" max="100">
+            <small style="color:var(--text-muted);">예: 200렙 음양사 약 40~45%, 250렙 음양사 51%</small>
+          </div>
+        </div>
+
+        <div id="calcResultBox" class="calc-result">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-secondary); border-radius: var(--radius-sm); font-size: 0.85rem;">
+          <h4 style="color: var(--accent-gold); margin-bottom: 0.35rem;">💡 왜 저항 깎기(주박/허영)가 필수인가요?</h4>
+          <p style="color: var(--text-secondary); line-height: 1.6;">
+            저항 260%인 몬스터는 기본 상태에서 공격 데미지의 단 <strong>1.4%</strong>만 들어갑니다.<br>
+            여기에 250렙 주박(51%)을 걸어 저항을 209%로 낮추면 들어가는 데미지가 <strong>9.56%</strong>로 올라가 
+            실제 데미지가 <strong>약 6.8배</strong>로 폭증합니다. 짭호선의 데미지 대부분은 음양사 레벨에서 완성됩니다!
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <p>천하제일상 거상 비공식 도감 & 육의전 시세 뷰어 (Gersang Agent & Market DB)</p>
+      <p style="margin: 0.5rem 0;">
+        데이터 소스: <a href="https://github.com/jhleee/gersang-db" target="_blank" rel="noopener">jhleee/gersang-db</a> · 
+        실시간 육의전: <a href="https://gerinee.com" target="_blank" rel="noopener">거리니닷컴</a> · 
+        도감 출처: 거상 공식 홈페이지 & gogolap
+      </p>
+      <p style="font-size:0.75rem; color: #475569;">
+        게임 데이터의 저작권은 ㈜에이케이인터렉티브에 있으며, 본 웹페이지는 게임 이용자 및 에이전트 참조를 위해 제작된 오픈소스 프로젝트입니다.
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
