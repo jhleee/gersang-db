@@ -6,6 +6,10 @@
 ① 에셋 수집 → ② 합성 데이터셋 생성 → ③ Colab 학습 노트북 → ④ 실제 사냥 화면 검수
 전 과정의 결과와 한계를 기록한다.
 
+> **2026-11-10 v2 개편**: 6클래스(개별 몹) → 2클래스(`monster`/`item_drop`)로 통합하고
+> 데이터셋을 1,000장 → **3,000장**으로 확장했다. 아래 §1~§8은 v1(6클래스·1,000장) 기록이며,
+> v2의 실제 구성·검수 결과는 **§9**에 정리했다.
+
 ---
 
 ## 1. 결과 요약
@@ -166,8 +170,11 @@ python tools/collect_assets.py --out assets --negatives 150
 # 2) 배경 패치 생성 (스크린샷 크롭 + 절차적 텍스처)
 python tools/make_backgrounds.py --out assets/backgrounds --patches-per-shot 10
 
-# 3) 합성 데이터셋 1,000장
-python tools/generate_yolo_dataset.py --out datasets/gersang_yolo --images 1000 --preview 16
+# 3) 합성 데이터셋 3,000장 (v2: 2클래스)
+python tools/generate_yolo_dataset.py --out datasets/gersang_yolo --images 3000 --preview 16
+
+# 3-1) 데이터셋 기계 검수 (파일 짝·좌표·중복·통계)
+python tools/verify_yolo_dataset.py --data datasets/gersang_yolo
 
 # 4) 학습 (GPU)
 yolo detect train data=datasets/gersang_yolo/data.yaml model=yolov8n.pt epochs=50 imgsz=640 batch=16
@@ -184,3 +191,89 @@ yolo detect predict model=runs/detect/train/weights/best.pt source=test_images c
   이 저장소의 에셋과 데이터셋은 **비상업적 연구·개인 학습 목적**으로만 모은 것이며, 재배포·상업적 이용을 허가하지 않는다.
 - 스크린샷 출처: 해해(haehaegame.tistory.com), 문성(moon-seong.tistory.com), 쀼뿝(mhss.tistory.com) 공략글.
   원저작자 요청 시 즉시 해당 파일을 삭제한다.
+
+---
+
+## 9. v2 개편 — 2클래스·3,000장 (2026-11-10)
+
+### 9.1 무엇이 바뀌었나
+
+| 항목 | v1 | v2 |
+|---|---|---|
+| 클래스 | 6종 (imugi·yeomra·docheol·nue·sammun·item_drop) | **2종** (`0 monster`, `1 item_drop`) |
+| 데이터 | 1,000장 (train 800 / val 200) | **3,000장** (train 2,400 / val 600) |
+| 몬스터 에셋 | 5종 + 네거티브 146종 | **인기 몬스터 86종** + 전체 스프라이트 360종(네거티브 335 포함) |
+| 박스 | 4,092개 | **13,947개** (train 11,099 / val 2,848) |
+| 생성기 | `tools/generate_yolo_dataset.py` (v1) | 같은 파일 전면 개편 — 몰이사냥 군집·보스 인카운터·필드 드랍·빈 배경 4종 장면 |
+
+개별 몹을 클래스로 나누면 86종 × 클래스 불균형 문제가 생기고, 실사용 목적(사냥 화면에서
+"몹이 어디 있는지")에는 클래스 구분이 필요 없어 `monster` 하나로 합쳤다.
+
+### 9.2 생성 결과 (seed 20261110, 640×640)
+
+| 항목 | train | val | 합계 |
+|---|---|---|---|
+| 이미지 | 2,400 | 600 | **3,000** |
+| monster 박스 | 8,836 | 2,279 | 11,115 |
+| item_drop 박스 | 2,263 | 569 | 2,832 |
+| 빈 라벨(배경 네거티브) | 341 | 75 | 416 (13.9%) |
+| 이미지당 박스 평균 | 5.39 | 5.42 | — |
+
+- 클래스 비율: monster 79.7% / item_drop 20.3%
+- 박스 면적: 중앙값 **1.89%**(640px에서 한 변 약 88px), 최소 0.012%, 최대 24.4%(보스)
+- 생성 시간: 이 CPU 환경(2코어)에서 **270초**. seed가 같으면 항상 동일한 결과가 나온다.
+
+### 9.3 검수 결과 — 통과
+
+`tools/verify_yolo_dataset.py`(이번에 추가)로 파일 짝·라벨 문법·좌표 범위·중복·통계 일치를 기계 검사했다.
+
+| 검사 | 결과 |
+|---|---|
+| 이미지·라벨 짝 | 3,000/3,000 일치, 누락·고아 0 |
+| 라벨 문법·좌표 | 전부 `class x y w h`(0~1), 범위 밖·퇴화 박스 0 |
+| 이미지 크기 | 전부 640×640, 손상 0 |
+| 중복 이미지 | 0쌍 |
+| dataset_stats.json | 실제 집계와 완전 일치 |
+| 미리보기 16장 육안 확인 | 라벨 박스·HP바·데미지 숫자·아이템 드랍 정상 |
+
+![v2 데이터셋 미리보기 16장 (라벨 박스 표시)](img/yolo_v2_preview_grid.jpg)
+
+> 이전에 2,122장까지 만들어져 있던 폴더에는 v1(6클래스) 시절 파일 318장이 섞여 있었다.
+> 이번에 폴더를 비우고 **3,000장을 처음부터 다시 생성**해 섞임을 없앴다(이전 폴더는 `.scratch/gersang/v2_stale_20261110`로 보관).
+
+### 9.4 배포 압축본
+
+- `gersang_yolo_dataset_v2.zip` — 6,020개 파일, **264.8MB**(무압축 저장, JPEG이라 재압축 이득 없음), 무결성 검사 통과
+- 구성: `images/`, `labels/`, `preview/`(16장), `data.yaml`, `dataset_stats.json`, `verify_report.json`, `README.md`
+- Colab 노트북은 이 압축본을 업로드하면 `USE_UPLOADED_ZIP = True` 한 줄로 바로 쓸 수 있게 고쳐 두었다(내부 폴더 `gersang_yolo_dataset_v2/`).
+
+### 9.5 CPU 베이스라인 검증 (파이프라인 확인용)
+
+GPU(Colab T4) 학습 전에 **데이터가 Ultralytics로 끝까지 학습·평가되는지**만 확인한 런이다.
+
+| 설정 | 값 |
+|---|---|
+| 모델 | YOLOv8n (COCO 사전학습) 전이학습 |
+| 해상도 / 배치 | 320px / 8 |
+| epoch | 6 (학습셋 30%인 720장만 사용, 시간 제약) |
+| 장비 | CPU 2코어 (mkldnn 비활성) |
+
+검증셋 600장(2,848 박스) 결과:
+
+| 클래스 | P | R | mAP50 | mAP50-95 |
+|---|---|---|---|---|
+| all | 0.659 | 0.506 | **0.539** | 0.262 |
+| monster | 0.562 | 0.636 | 0.633 | 0.337 |
+| item_drop | 0.756 | 0.377 | 0.445 | 0.187 |
+
+- CPU 추론 속도: 이미지당 전처리 0.4ms + 추론 69.9ms(320px, 2코어)
+- **이 수치는 최종 성능이 아니다.** 320px로 줄여 6 epoch만 돈 스모크 테스트이며, 640px 50 epoch T4 학습에서 훨씬 올라간다.
+- 실제 사냥 화면 13장에 그대로 돌려 보면 몹은 잡히지만(예: 유명계 3층·귀곡성 화면에서 8~15개),
+  나무·풀 덤불과 인벤토리 UI 패널을 몬스터로 오탐하는 사례가 보인다 → 아래 개선안.
+
+### 9.6 v2에서 남은 일
+
+1. Colab T4에서 `epochs=50, imgsz=640, batch=16` 본학습 → `best.pt`/`best.onnx` 교체
+2. UI를 많이 포함한 화면은 UI 영역을 잘라내고 추론(또는 UI 크롭을 네거티브로 추가)
+3. 실제 사냥 화면 100~200장 라벨링해 실사 val을 만들면 합성→실사 도메인 갭이 가장 크게 줄어든다
+4. 나무·덤불 오탐 억제용 하드 네거티브(배경 전용 크롭) 보강
