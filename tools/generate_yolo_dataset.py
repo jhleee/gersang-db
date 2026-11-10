@@ -1,23 +1,15 @@
 #!/usr/bin/env python3
-"""거상 YOLO 학습용 합성 데이터셋 생성기.
+"""거상(Gersang) 대규모 YOLO 학습용 데이터셋 생성기 (v2).
 
-인게임 스프라이트(assets/monsters)와 실제 사냥 화면 배경(assets/backgrounds)을
-합성해 100% 정답 라벨(YOLO txt)을 가진 이미지를 대량으로 만든다.
+주요 개편 사항:
+  1. 클래스 통합: 개별 몹 대신 단일 'monster'(0) 및 'item_drop'(1) 체계
+  2. 인기 몬스터 대폭 확장: 50종 이상 (총 86종의 유명계·대둔산·얼음성·소림사·수미산·광려산·신선곡 몹)
+  3. 전체 스프라이트 풀(360종)과 42종 드랍템, 148장 실제 배경 연계
+  4. 몰이사냥 군집(클러스터), 보스 인카운터, 필드 드랍, 배경 단독 네거티브 장면 구현
+  5. 연옥술 화염·빙결 이펙트, 피격 점멸, 그림자, HP 바, 데미지 폰트 오버레이
 
-무엇을 재현하나
-  - 스프라이트의 인게임 표시 배율/도트 확대(nearest), 좌우 반전, 미세 회전
-  - 몬스터 발밑 그림자, 머리 위 HP 바, 피격 시 붉은/흰 발광
-  - 데미지 숫자, 드랍 아이템 아이콘과 이름표
-  - 학습 대상이 아닌 다른 몬스터(하드 네거티브) — 오탐 억제용
-  - 배경 밝기/색/블러/노이즈/JPEG 압축 열화
-
-라벨 규칙(YOLO)
-  class_id x_center y_center width height  (모두 0~1 정규화)
-  가려짐(occlusion)이 심해 실제로 보이는 픽셀이 35% 미만인 개체는 라벨에서 제외한다.
-
-사용 예
-  python tools/generate_yolo_dataset.py --out datasets/gersang_yolo --images 1000
-  python tools/generate_yolo_dataset.py --out /content/data/gersang_yolo --images 1000 --preview 16
+사용:
+  python tools/generate_yolo_dataset.py --out datasets/gersang_yolo --images 3000 --preview 16
 """
 from __future__ import annotations
 
@@ -32,27 +24,13 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
-CLASSES = ["imugi", "yeomra", "docheol", "nue", "sammun", "icecrab", "tuttleman", "item_drop"]
 
-# 인게임 화면에서 관측한 표시 배율(640x640 캔버스 기준).
-#   이무기   : 773x513 실사격에서 약 95px 높이 -> 원본 127px의 0.9배
-#   염라대왕 : 보스라 1.3~1.6배로 크게 그려진다(유명계 3층 실사격/썸네일 확인)
-#   나머지   : 원본 크기 ±25%
-SCALE_RANGE = {
-    "imugi": (0.70, 1.05),
-    "yeomra": (1.15, 1.65),
-    "docheol": (0.80, 1.25),
-    "nue": (0.80, 1.25),
-    "sammun": (0.80, 1.25),
-    "icecrab": (0.80, 1.25),
-    "tuttleman": (0.85, 1.25),
-}
+# 통합 클래스 체계
+CLASSES = ["monster", "item_drop"]
+KO_NAMES = {"monster": "몬스터", "item_drop": "드랍아이템"}
+
 ITEM_SCALE_RANGE = (0.35, 0.62)
-KO_NAMES = {
-    "imugi": "이무기", "yeomra": "염라대왕", "docheol": "어린도철",
-    "nue": "누에", "sammun": "중독된삼문", "icecrab": "얼음게",
-    "tuttleman": "거북궁사", "item_drop": "드랍아이템",
-}
+
 FONT_CANDIDATES = [
     "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
     "/usr/share/fonts/truetype/noto/NotoSansCJK-Bold.ttc",
@@ -76,9 +54,8 @@ def hflip(im: Image.Image) -> Image.Image:
 
 
 def color_jitter(im: np.ndarray, rng: random.Random,
-                 bright: float = 0.18, contrast: float = 0.18,
-                 sat: float = 0.18, hue: float = 0.0) -> np.ndarray:
-    """RGB float array (h,w,3) 0~255 -> 0~255"""
+                 bright: float = 0.16, contrast: float = 0.16,
+                 sat: float = 0.16, hue: float = 0.0) -> np.ndarray:
     x = im / 255.0
     b = 1.0 + rng.uniform(-bright, bright)
     x = x * b
@@ -95,13 +72,12 @@ def color_jitter(im: np.ndarray, rng: random.Random,
 
 
 def shift_hue(im: np.ndarray, degrees: float) -> np.ndarray:
-    """RGB(float 0~255) 배열의 색상(hue)만 회전. 속성별 색 변형(火/水/風/雷)을 흉내낸다."""
     if abs(degrees) < 0.5:
         return im
     import cv2
     u8 = np.clip(im, 0, 255).astype(np.uint8)
     hsv = cv2.cvtColor(u8, cv2.COLOR_RGB2HSV).astype(np.int16)
-    hsv[..., 0] = (hsv[..., 0] + int(degrees / 2)) % 180  # OpenCV H: 0~179
+    hsv[..., 0] = (hsv[..., 0] + int(degrees / 2)) % 180
     out = cv2.cvtColor(hsv.astype(np.uint8), cv2.COLOR_HSV2RGB).astype(np.float32)
     return out
 
@@ -113,61 +89,71 @@ def tint(im: np.ndarray, rgb: tuple[int, int, int], amount: float) -> np.ndarray
 
 class Assets:
     def __init__(self, root: Path):
-        self.monsters: dict[str, list[Image.Image]] = {c: [] for c in CLASSES[:-1]}
+        self.popular_monsters: list[Image.Image] = []
+        self.all_monsters: list[Image.Image] = []
+        self.boss_monsters: list[Image.Image] = []
         self.items: list[Image.Image] = []
-        self.negatives: list[Image.Image] = []
         self.backgrounds: list[Path] = []
 
-        for cls in CLASSES[:-1]:
-            for p in sorted((root / "assets" / "monsters" / cls).glob("*.png")):
-                self.monsters[cls].append(Image.open(p).convert("RGBA"))
+        # 1. 인기 몬스터 메타데이터 로드
+        pop_file = root / "data" / "popular_monsters.json"
+        popular_paths = set()
+        if pop_file.exists():
+            with open(pop_file, encoding="utf-8") as f:
+                pop_data = json.load(f)
+            for item in pop_data:
+                p = root / item["file"]
+                if p.exists():
+                    popular_paths.add(p.resolve())
+                    im = Image.open(p).convert("RGBA")
+                    self.popular_monsters.append(im)
+                    # 대형 보스 판별
+                    if any(boss in item.get("name", "") for boss in ["염라대왕", "천왕", "독룡", "인드라", "원망신", "절망신", "마룡"]):
+                        self.boss_monsters.append(im)
+
+        # 2. 전체 스프라이트 풀(assets/monsters + assets/negatives) 로드
+        all_sprite_paths = list((root / "assets" / "monsters").glob("*/*.png")) + \
+                           list((root / "assets" / "negatives").glob("*.png"))
+        for p in sorted(all_sprite_paths):
+            im = Image.open(p).convert("RGBA")
+            self.all_monsters.append(im)
+            if p.resolve() not in popular_paths:
+                pass  # general pool
+
+        if not self.popular_monsters:
+            self.popular_monsters = self.all_monsters[:80]
+        if not self.boss_monsters:
+            self.boss_monsters = self.popular_monsters[:10]
+
+        # 3. 드랍 아이템 로드
         for p in sorted((root / "assets" / "items").glob("*.png")):
             self.items.append(Image.open(p).convert("RGBA"))
-        for p in sorted((root / "assets" / "negatives").glob("*.png")):
-            self.negatives.append(Image.open(p).convert("RGBA"))
+
+        # 4. 배경 로드
         self.backgrounds = sorted((root / "assets" / "backgrounds").glob("*.jpg"))
 
-        missing = [c for c in CLASSES[:-1] if not self.monsters[c]]
-        if missing:
-            raise SystemExit(f"스프라이트가 없습니다: {missing} — tools/collect_assets.py 먼저 실행")
+        if not self.all_monsters:
+            raise SystemExit("몬스터 스프라이트가 없습니다.")
         if not self.items:
-            raise SystemExit("아이템 아이콘이 없습니다")
+            raise SystemExit("아이템 아이콘이 없습니다.")
         if len(self.backgrounds) < 5:
-            raise SystemExit("배경이 부족합니다 — tools/make_backgrounds.py 먼저 실행")
-        print(f"에셋: 몬스터 {sum(len(v) for v in self.monsters.values())}종, "
-              f"아이템 {len(self.items)}, 네거티브 {len(self.negatives)}, "
-              f"배경 {len(self.backgrounds)}")
+            raise SystemExit("배경 이미지가 부족합니다.")
 
-
-class Scene:
-    """한 장 합성. objects: (cls_id, sprite_rgba, x, y, scale, flip, alpha_flash)"""
-
-    def __init__(self, size: int):
-        self.size = size
-        self.objs: list[dict] = []
-
-    def add(self, **kw):
-        self.objs.append(kw)
+        print(f"에셋 로드 완료: 인기 몬스터 {len(self.popular_monsters)}종, "
+              f"전체 몬스터 {len(self.all_monsters)}종, 아이템 {len(self.items)}종, 배경 {len(self.backgrounds)}장")
 
 
 def make_background(assets: Assets, size: int, rng: random.Random) -> Image.Image:
     p = rng.choice(assets.backgrounds)
     bg = Image.open(p).convert("RGB")
-    # 배경 안에서 임의 크기 크롭 후 확대/축소 -> 배율 다양화
     w, h = bg.size
-    side = int(min(w, h) * rng.uniform(0.62, 1.0))
+    side = int(min(w, h) * rng.uniform(0.65, 1.0))
     x = rng.randint(0, max(0, w - side))
     y = rng.randint(0, max(0, h - side))
-    crop = bg.crop((x, y, x + side, y + side)).resize((size, size), Image.BILINEAR)
-    if rng.random() < 0.5:
-        crop = hflip(crop)
-    arr = np.asarray(crop, np.float32)
-    arr = color_jitter(arr, rng, bright=0.16, contrast=0.16, sat=0.20)
+    crop = bg.crop((x, y, x + side, y + side))
+    out = crop.resize((size, size), Image.BILINEAR)
     if rng.random() < 0.35:
-        arr = arr * rng.uniform(0.82, 1.12)  # 스크린샷 촬영 환경(밤/낮) 차이
-    out = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
-    if rng.random() < 0.25:
-        out = out.filter(ImageFilter.GaussianBlur(rng.uniform(0.3, 0.9)))
+        out = out.filter(ImageFilter.GaussianBlur(rng.uniform(0.3, 0.8)))
     return out
 
 
@@ -175,22 +161,19 @@ def place_sprite(canvas: np.ndarray, owner: np.ndarray,
                  sprite: Image.Image, cx: int, cy: int, scale: float,
                  rng: random.Random, flip: bool, obj_id: int,
                  tint_rgb=None, tint_amount=0.0) -> tuple[int, int, int, int] | None:
-    """스프라이트를 캔버스에 합성. 실제로 그려진 픽셀의 bbox(절대좌표)를 돌려준다."""
     H, W = canvas.shape[:2]
     w = max(4, int(round(sprite.width * scale)))
     h = max(4, int(round(sprite.height * scale)))
-    # 보행/대기 호흡 애니메이션 신축(squash & stretch) 모사
     if rng.random() < 0.65:
-        squash = rng.uniform(0.93, 1.07)
+        squash = rng.uniform(0.94, 1.06)
         w = max(4, int(round(w / squash)))
         h = max(4, int(round(h * squash)))
     spr = sprite
     if flip:
         spr = hflip(spr)
-    # 인게임은 원본 픽셀을 크게 확대해 그린다 -> nearest 후 약한 스무딩
     spr = spr.resize((w, h), Image.NEAREST)
-    if scale > 1.4 and rng.random() < 0.6:
-        spr = spr.filter(ImageFilter.GaussianBlur(0.4))
+    if scale > 1.3 and rng.random() < 0.5:
+        spr = spr.filter(ImageFilter.GaussianBlur(0.35))
     angle = rng.uniform(-4, 4)
     if abs(angle) > 0.8:
         spr = spr.rotate(angle, resample=Image.BICUBIC, expand=True)
@@ -200,10 +183,8 @@ def place_sprite(canvas: np.ndarray, owner: np.ndarray,
     alpha = arr[..., 3] / 255.0
     if tint_amount > 0:
         arr[..., :3] = tint(arr[..., :3], tint_rgb, tint_amount)
-    # 반투명 테두리 정리(스프라이트 가장자리 잔여 알파)
     alpha = np.clip((alpha - 0.08) * 1.15, 0, 1)
 
-    # 캔버스와 교집합
     xs0, ys0 = max(0, x0), max(0, y0)
     xs1, ys1 = min(W, x0 + w), min(H, y0 + h)
     if xs1 - xs0 < 3 or ys1 - ys0 < 3:
@@ -223,7 +204,7 @@ def place_sprite(canvas: np.ndarray, owner: np.ndarray,
 
 def draw_shadow(canvas: np.ndarray, cx: int, cy: int, w: int, h: int) -> None:
     H, W = canvas.shape[:2]
-    rw, rh = max(6, int(w * 0.48)), max(3, int(w * 0.16))
+    rw, rh = max(6, int(w * 0.46)), max(3, int(w * 0.16))
     layer = Image.new("L", (rw * 2, rh * 2), 0)
     d = ImageDraw.Draw(layer)
     d.ellipse((0, 0, rw * 2 - 1, rh * 2 - 1), fill=95)
@@ -244,9 +225,9 @@ def draw_hp_bar(canvas: np.ndarray, box, rng: random.Random) -> None:
     w = max(14, int((x1 - x0) * rng.uniform(0.75, 1.0)))
     h = max(3, int(round((y1 - y0) * 0.045)))
     bx = int((x0 + x1) / 2 - w / 2) + rng.randint(-2, 2)
-    by = max(0, y0 - h - rng.randint(2, 7))
-    fill_ratio = rng.uniform(0.25, 1.0)
-    col = (170, 30, 25) if rng.random() < 0.6 else (40, 40, 46)
+    by = max(0, y0 - h - rng.randint(2, 6))
+    fill_ratio = rng.uniform(0.20, 1.0)
+    col = (175, 30, 25) if rng.random() < 0.65 else (40, 40, 46)
     for yy in range(h):
         for xx in range(w):
             px, py = bx + xx, by + yy
@@ -260,24 +241,19 @@ def draw_hp_bar(canvas: np.ndarray, box, rng: random.Random) -> None:
                     canvas[py, px, :3] = (58, 58, 62)
 
 
-def draw_damage_numbers(canvas: np.ndarray, boxes, rng: random.Random,
-                        font_cache: dict) -> None:
+def draw_damage_numbers(canvas: np.ndarray, boxes, rng: random.Random, font_cache: dict) -> None:
     if not boxes:
         return
     img = Image.fromarray(np.clip(canvas, 0, 255).astype(np.uint8))
     d = ImageDraw.Draw(img)
     for _ in range(rng.randint(1, 4)):
         box = rng.choice(boxes)
-        size = rng.randint(15, 30)
+        size = rng.randint(15, 28)
         if size not in font_cache:
             font_cache[size] = load_font(size)
-        text = rng.choice([
-            str(rng.randint(60, 9999)),
-            str(rng.randint(100, 99999)),
-            "MISS",
-        ])
+        text = rng.choice([str(rng.randint(100, 9999)), str(rng.randint(1000, 99999)), "MISS"])
         col = rng.choice([(255, 255, 255), (255, 226, 120), (255, 150, 120), (140, 220, 255)])
-        x = int((box[0] + box[2]) / 2 + rng.randint(-25, 25))
+        x = int((box[0] + box[2]) / 2 + rng.randint(-20, 20))
         y = int(box[1] + rng.uniform(-0.1, 0.7) * (box[3] - box[1]))
         for dx, dy, cc in ((2, 2, (0, 0, 0)), (0, 0, col)):
             d.text((x + dx, y + dy), text, font=font_cache[size], fill=cc)
@@ -285,8 +261,7 @@ def draw_damage_numbers(canvas: np.ndarray, boxes, rng: random.Random,
 
 
 def draw_skill_fx(canvas: np.ndarray, boxes, rng: random.Random) -> None:
-    """연옥술·화염 및 빙결·얼음 계열 스킬이 몬스터를 덮는 상황을 흉내낸다(가림/광원 강화)."""
-    if not boxes or rng.random() > 0.40:
+    if not boxes or rng.random() > 0.45:
         return
     H, W = canvas.shape[:2]
     img = Image.fromarray(np.clip(canvas, 0, 255).astype(np.uint8))
@@ -315,6 +290,20 @@ def draw_skill_fx(canvas: np.ndarray, boxes, rng: random.Random) -> None:
         canvas[:] = canvas * (1 - mx * 0.7) + np.asarray(overlay, np.float32) * mx * 0.7
 
 
+def compute_monster_scale(spr: Image.Image, size: int, rng: random.Random) -> float:
+    base = size / 640.0
+    max_dim = max(spr.width, spr.height)
+    if max_dim < 65:
+        # 소형 몬스터 (딱정벌레, 어린도철, 꼬마산적 등)
+        return base * rng.uniform(1.05, 1.55)
+    elif max_dim > 180:
+        # 대형/보스 몬스터 (염라, 천왕, 독룡 등)
+        return base * rng.uniform(0.65, 1.05)
+    else:
+        # 일반 중형 몬스터 (이무기, 삼문, 얼음게, 거북궁사 등)
+        return base * rng.uniform(0.78, 1.25)
+
+
 def build_scene(assets: Assets, size: int, rng: random.Random,
                 scene_type: str) -> tuple[np.ndarray, list[dict]]:
     bg = make_background(assets, size, rng)
@@ -323,124 +312,122 @@ def build_scene(assets: Assets, size: int, rng: random.Random,
     boxes_out: list[dict] = []
     font_cache: dict = {}
 
-    plan: list[tuple[str, int]] = []
-    if scene_type == "imugi":
-        plan.append(("imugi", rng.randint(5, 14)))
-    elif scene_type == "yeomra":
-        plan.append(("yeomra", rng.randint(3, 8)))
-    elif scene_type == "docheol":
-        plan.append(("docheol", rng.randint(2, 7)))
-    elif scene_type == "nue":
-        plan.append(("nue", rng.randint(2, 7)))
-    elif scene_type == "sammun":
-        plan.append(("sammun", rng.randint(3, 9)))
-    elif scene_type == "icecrab":
-        plan.append(("icecrab", rng.randint(4, 11)))
-    elif scene_type == "tuttleman":
-        plan.append(("tuttleman", rng.randint(3, 9)))
-    elif scene_type == "mixed":
-        picks = rng.sample(CLASSES[:-1], rng.randint(2, 4))
-        for c in picks:
-            plan.append((c, rng.randint(1, 4)))
-    elif scene_type == "drop":
-        if rng.random() < 0.75:
-            plan.append((rng.choice(CLASSES[:-1]), rng.randint(0, 3)))
-        plan.append(("item_drop", rng.randint(1, 4)))
-    else:
-        plan.append((rng.choice(CLASSES[:-1]), rng.randint(0, 2)))
+    if scene_type == "empty_bg":
+        # 오탐 방지용 배경 단독 이미지
+        return np.clip(canvas, 0, 255).astype(np.uint8), []
 
-    # 하드 네거티브(학습 대상이 아닌 몬스터)
-    if assets.negatives and rng.random() < 0.75:
-        n_neg = rng.randint(1, 4)
-    else:
-        n_neg = 0
-
-    items = []  # (cls, sprite, cx, cy, scale, flip, is_item)
+    items = []  # (cls_name, sprite, cx, cy, scale, flip, is_item)
     occupied: list[tuple[int, int, int]] = []
 
-    def pick_pos(w: int, h: int, cluster_prob: float = 0.45) -> tuple[int, int]:
-        # 실제 사냥은 몰이(무리) 사냥이라 몬스터가 겹쳐 쌓인다. 절반 가까이는 기존 개체 옆에 붙인다.
+    def pick_pos(w: int, h: int, cluster_prob: float = 0.55) -> tuple[int, int]:
+        # 몰이사냥 군집화 모사
         if occupied and rng.random() < cluster_prob:
             ox, oy, ow = rng.choice(occupied)
             for _ in range(12):
-                cx = ox + int(rng.gauss(0, 0.45 * (w + ow) / 2))
-                cy = oy + int(rng.gauss(0, 0.22 * (h + ow) / 2))
+                cx = ox + int(rng.gauss(0, 0.42 * (w + ow) / 2))
+                cy = oy + int(rng.gauss(0, 0.20 * (h + ow) / 2))
                 cx = max(-w // 5, min(size + w // 5 - 1, cx))
-                cy = max(int(size * 0.05), min(int(size * 0.97), cy))
+                cy = max(int(size * 0.06), min(int(size * 0.96), cy))
                 return cx, cy
-        for _ in range(30):
+        for _ in range(25):
             cx = rng.randint(-w // 6, size + w // 6 - 1)
             cy = rng.randint(int(size * 0.08), int(size * 0.95))
-            if all(math.hypot(cx - ox, cy - oy) > 0.16 * (w + ow) / 2 + 4
-                   for ox, oy, ow in occupied) or rng.random() < 0.15:
+            if all(math.hypot(cx - ox, cy - oy) > 0.16 * (w + ow) / 2 + 4 for ox, oy, ow in occupied) or rng.random() < 0.15:
                 return cx, cy
         return rng.randint(0, size - 1), rng.randint(int(size * 0.1), int(size * 0.95))
 
-    for cls, count in plan:
-        for _ in range(count):
-            if cls == "item_drop":
+    # 장면 유형별 엔터티 구성
+    if scene_type == "mobbing":
+        # 대규모 몰이사냥 (6~14마리)
+        n_mobs = rng.randint(6, 14)
+        pool = assets.popular_monsters if rng.random() < 0.85 else assets.all_monsters
+        primary_spr = rng.choice(pool)
+        for _ in range(n_mobs):
+            spr = primary_spr if rng.random() < 0.65 else rng.choice(pool)
+            scale = compute_monster_scale(spr, size, rng)
+            w, h = int(spr.width * scale), int(spr.height * scale)
+            cx, cy = pick_pos(w, h, cluster_prob=0.65)
+            occupied.append((cx, cy, w))
+            items.append(("monster", spr, cx, cy, scale, rng.random() < 0.5, False))
+        if rng.random() < 0.45:
+            # 드랍 아이템 1~3개 추가
+            for _ in range(rng.randint(1, 3)):
                 spr = rng.choice(assets.items)
                 scale = rng.uniform(*ITEM_SCALE_RANGE) * (size / 640.0)
-            else:
-                spr = rng.choice(assets.monsters[cls])
-                base = size / 640.0
-                lo, hi = SCALE_RANGE[cls]
-                scale = base * rng.uniform(lo, hi)
-            w, h = int(spr.width * scale), int(spr.height * scale)
-            cx, cy = pick_pos(w, h)
-            occupied.append((cx, cy, w))
-            items.append((cls, spr, cx, cy, scale, rng.random() < 0.5, cls == "item_drop"))
+                w, h = int(spr.width * scale), int(spr.height * scale)
+                cx, cy = pick_pos(w, h, cluster_prob=0.3)
+                occupied.append((cx, cy, w))
+                items.append(("item_drop", spr, cx, cy, scale, rng.random() < 0.5, True))
 
-    negs = []
-    for _ in range(n_neg):
-        spr = rng.choice(assets.negatives)
-        scale = (size / 640.0) * rng.uniform(0.5, 1.35)
-        scale = min(scale, (0.42 * size) / max(spr.width, spr.height))
-        w, h = int(spr.width * scale), int(spr.height * scale)
-        cx, cy = pick_pos(w, h)
+    elif scene_type == "boss_encounter":
+        # 보스 1마리 + 호위 몬스터 3~7마리
+        boss_spr = rng.choice(assets.boss_monsters)
+        scale = compute_monster_scale(boss_spr, size, rng) * rng.uniform(1.15, 1.45)
+        w, h = int(boss_spr.width * scale), int(boss_spr.height * scale)
+        cx, cy = pick_pos(w, h, cluster_prob=0.0)
         occupied.append((cx, cy, w))
-        negs.append((spr, cx, cy, scale, rng.random() < 0.5))
+        items.append(("monster", boss_spr, cx, cy, scale, rng.random() < 0.5, False))
+        for _ in range(rng.randint(3, 7)):
+            spr = rng.choice(assets.popular_monsters)
+            scale = compute_monster_scale(spr, size, rng)
+            w, h = int(spr.width * scale), int(spr.height * scale)
+            cx, cy = pick_pos(w, h, cluster_prob=0.5)
+            occupied.append((cx, cy, w))
+            items.append(("monster", spr, cx, cy, scale, rng.random() < 0.5, False))
 
-    # 뒤->앞(위->아래) 순으로 그려 겹침이 자연스럽게
-    entries = [(y, "obj", i) for i, (_, _, _, y, _, _, _) in enumerate(items)]
-    entries += [(y, "neg", i) for i, (_, _, y, _, _) in enumerate(negs)]
-    entries.sort()
+    elif scene_type == "field":
+        # 일반 필드 소규모 사냥 (2~6마리)
+        n_mobs = rng.randint(2, 6)
+        for _ in range(n_mobs):
+            spr = rng.choice(assets.popular_monsters if rng.random() < 0.8 else assets.all_monsters)
+            scale = compute_monster_scale(spr, size, rng)
+            w, h = int(spr.width * scale), int(spr.height * scale)
+            cx, cy = pick_pos(w, h, cluster_prob=0.35)
+            occupied.append((cx, cy, w))
+            items.append(("monster", spr, cx, cy, scale, rng.random() < 0.5, False))
 
+    elif scene_type == "drop_field":
+        # 아이템 회수 장면 (몬스터 0~3마리 + 아이템 3~8개)
+        for _ in range(rng.randint(0, 3)):
+            spr = rng.choice(assets.popular_monsters)
+            scale = compute_monster_scale(spr, size, rng)
+            w, h = int(spr.width * scale), int(spr.height * scale)
+            cx, cy = pick_pos(w, h, cluster_prob=0.3)
+            occupied.append((cx, cy, w))
+            items.append(("monster", spr, cx, cy, scale, rng.random() < 0.5, False))
+        for _ in range(rng.randint(3, 8)):
+            spr = rng.choice(assets.items)
+            scale = rng.uniform(*ITEM_SCALE_RANGE) * (size / 640.0)
+            w, h = int(spr.width * scale), int(spr.height * scale)
+            cx, cy = pick_pos(w, h, cluster_prob=0.45)
+            occupied.append((cx, cy, w))
+            items.append(("item_drop", spr, cx, cy, scale, rng.random() < 0.5, True))
+
+    # Y좌표 순(위->아래) 정렬하여 자연스러운 원근 겹침 합성
+    entries = sorted([(cy, i) for i, (_, _, _, cy, _, _, _) in enumerate(items)])
     obj_boxes: dict[int, tuple[int, int, int, int]] = {}
-    for _, kind, idx in entries:
-        if kind == "obj":
-            cls, spr, cx, cy, scale, flip, is_item = items[idx]
-            obj_id = idx + 1
-            cy_draw = cy
-            if not is_item:
-                draw_shadow(canvas, cx, cy, int(spr.width * scale), int(spr.height * scale))
-            else:
-                # 아이템은 바닥의 작은 받침 위에 놓인 느낌
-                canvas = np.asarray(
-                    Image.fromarray(np.clip(canvas, 0, 255).astype(np.uint8))
-                    .filter(ImageFilter.GaussianBlur(0.01)), np.float32)
-            if not is_item and rng.random() < 0.28:
-                spr = spr.copy()
-                a = np.asarray(spr, np.float32)
-                a[..., :3] = shift_hue(a[..., :3], rng.uniform(-45, 45))
-                spr = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8), "RGBA")
-            flash = None
-            amount = 0.0
-            if not is_item and rng.random() < 0.13:
-                flash = rng.choice([(255, 255, 255), (255, 80, 80)])
-                amount = rng.uniform(0.25, 0.6)
-            box = place_sprite(canvas, owner, spr, cx, cy_draw, scale,
-                               rng, flip, obj_id, tint_rgb=flash, tint_amount=amount)
-            if box:
-                obj_boxes[idx] = box
-                if not is_item and rng.random() < 0.45:
-                    draw_hp_bar(canvas, box, rng)
-        else:
-            spr, cx, cy, scale, flip = negs[idx]
-            draw_shadow(canvas, cx, cy, int(spr.width * scale), int(spr.height * scale))
-            place_sprite(canvas, owner, spr, cx, cy, scale, rng, flip, 9000 + idx)
 
-    # 가시성 검사 후 라벨 확정
+    for _, idx in entries:
+        cls, spr, cx, cy, scale, flip, is_item = items[idx]
+        obj_id = idx + 1
+        if not is_item:
+            draw_shadow(canvas, cx, cy, int(spr.width * scale), int(spr.height * scale))
+        if not is_item and rng.random() < 0.25:
+            spr = spr.copy()
+            a = np.asarray(spr, np.float32)
+            a[..., :3] = shift_hue(a[..., :3], rng.uniform(-40, 40))
+            spr = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8))
+        flash = None
+        amount = 0.0
+        if not is_item and rng.random() < 0.12:
+            flash = rng.choice([(255, 255, 255), (255, 80, 80)])
+            amount = rng.uniform(0.25, 0.55)
+        box = place_sprite(canvas, owner, spr, cx, cy, scale, rng, flip, obj_id, tint_rgb=flash, tint_amount=amount)
+        if box:
+            obj_boxes[idx] = box
+            if not is_item and rng.random() < 0.42:
+                draw_hp_bar(canvas, box, rng)
+
     boxes_for_numbers = []
     for idx, box in obj_boxes.items():
         cls, spr, cx, cy, scale, flip, is_item = items[idx]
@@ -449,44 +436,34 @@ def build_scene(assets: Assets, size: int, rng: random.Random,
         own = owner[y0:y1, x0:x1] == obj_id
         visible = own.sum()
         bbox_px = (x1 - x0) * (y1 - y0)
-        if visible < max(20, 0.30 * bbox_px):
+        if visible < max(18, 0.28 * bbox_px):
             continue
-        if (x1 - x0) < 7 or (y1 - y0) < 7:
-            continue
-        if x1 <= 0 or y1 <= 0 or x0 >= size or y0 >= size:
+        if (x1 - x0) < 6 or (y1 - y0) < 6:
             continue
         x0c, y0c = max(0, x0), max(0, y0)
         x1c, y1c = min(size, x1), min(size, y1)
-        if (x1c - x0c) * (y1c - y0c) < 0.45 * bbox_px:
+        if (x1c - x0c) * (y1c - y0c) < 0.40 * bbox_px:
             continue
         xs = (x0c + x1c) / 2 / size
         ys = (y0c + y1c) / 2 / size
         ws = (x1c - x0c) / size
         hs = (y1c - y0c) / size
-        boxes_out.append({"cls": CLASSES.index(cls), "xyxy": [x0c, y0c, x1c, y1c],
-                          "yolo": [xs, ys, ws, hs]})
-        boxes_for_numbers.append((x0c, y0c, x1c, y1c))
+        cls_id = CLASSES.index(cls)
+        boxes_out.append({"cls": cls_id, "xyxy": [x0c, y0c, x1c, y1c], "yolo": [xs, ys, ws, hs]})
+        if not is_item:
+            boxes_for_numbers.append((x0c, y0c, x1c, y1c))
 
     draw_skill_fx(canvas, boxes_for_numbers, rng)
-
-    if rng.random() < 0.55 and boxes_for_numbers:
+    if rng.random() < 0.50 and boxes_for_numbers:
         draw_damage_numbers(canvas, boxes_for_numbers, rng, font_cache)
 
-    # 후처리: 색/노출/노이즈/비네트
     if rng.random() < 0.35:
-        canvas = shift_hue(canvas, rng.uniform(-35, 35))
+        canvas = shift_hue(canvas, rng.uniform(-30, 30))
     canvas = color_jitter(canvas, rng, bright=0.06, contrast=0.08, sat=0.10)
-    if rng.random() < 0.4:
+    if rng.random() < 0.40:
         img = Image.fromarray(np.clip(canvas, 0, 255).astype(np.uint8))
-        img = img.filter(ImageFilter.GaussianBlur(rng.uniform(0.2, 0.7)))
+        img = img.filter(ImageFilter.GaussianBlur(rng.uniform(0.2, 0.6)))
         canvas = np.asarray(img, np.float32)
-    if rng.random() < 0.5:
-        canvas += np.random.normal(0, rng.uniform(1.5, 5.0), canvas.shape)
-    if rng.random() < 0.4:
-        yy, xx = np.mgrid[0:size, 0:size]
-        r = np.sqrt(((xx - size / 2) / (size / 2)) ** 2 + ((yy - size / 2) / (size / 2)) ** 2)
-        vig = np.clip(1.05 - 0.22 * r ** 2, 0.6, 1.0)[..., None]
-        canvas *= vig
 
     return np.clip(canvas, 0, 255).astype(np.uint8), boxes_out
 
@@ -494,11 +471,11 @@ def build_scene(assets: Assets, size: int, rng: random.Random,
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="datasets/gersang_yolo")
-    ap.add_argument("--images", type=int, default=1000)
+    ap.add_argument("--images", type=int, default=3000)
     ap.add_argument("--val-ratio", type=float, default=0.2)
     ap.add_argument("--size", type=int, default=640)
     ap.add_argument("--seed", type=int, default=20261110)
-    ap.add_argument("--preview", type=int, default=0, help="라벨을 그려 미리보기 저장")
+    ap.add_argument("--preview", type=int, default=16)
     ap.add_argument("--root", default=str(ROOT))
     args = ap.parse_args()
 
@@ -514,20 +491,22 @@ def main() -> int:
     n_train = args.images - n_val
     split_rng = random.Random(args.seed + 1)
     val_idx = set(split_rng.sample(range(args.images), n_val))
-    scene_types = ["imugi", "yeomra", "docheol", "nue", "sammun", "icecrab", "tuttleman", "drop", "mixed", "icecrab", "drop"]
+
+    scene_types = ["mobbing", "mobbing", "boss_encounter", "field", "drop_field", "mobbing", "empty_bg"]
     stats = {c: {"train": 0, "val": 0} for c in CLASSES}
     boxes_total = {"train": 0, "val": 0}
 
     previews = []
+    print(f"합성 데이터셋 생성 시작: 총 {args.images}장 (학습 {n_train}장 / 검증 {n_val}장)")
+
     for i in range(args.images):
         split = "val" if i in val_idx else "train"
         rng = random.Random(args.seed + i * 7919)
-        scene_type = scene_types[i % len(scene_types)] if i < len(scene_types) * 3 else \
-            rng.choice(scene_types)
+        scene_type = rng.choice(scene_types)
         arr, boxes = build_scene(assets, args.size, rng, scene_type)
         img = Image.fromarray(arr)
         stem = f"{split}_{i:05d}"
-        img.save(out / "images" / split / f"{stem}.jpg", quality=rng.randint(72, 94))
+        img.save(out / "images" / split / f"{stem}.jpg", quality=rng.randint(75, 93))
         with open(out / "labels" / split / f"{stem}.txt", "w", encoding="utf-8") as f:
             for b in boxes:
                 f.write(f"{b['cls']} " + " ".join(f"{v:.6f}" for v in b["yolo"]) + "\n")
@@ -536,17 +515,19 @@ def main() -> int:
         boxes_total[split] += len(boxes)
         if args.preview and len(previews) < args.preview:
             previews.append((img.copy(), boxes, stem))
-        if (i + 1) % 100 == 0:
-            print(f"  {i + 1}/{args.images} ...")
+        if (i + 1) % 500 == 0 or (i + 1) == args.images:
+            print(f"  진행률: {i + 1}/{args.images} ({(i + 1)/args.images*100:.1f}%)")
 
-    # 미리보기: 라벨 박스 오버레이
+    # 미리보기 생성
     for img, boxes, stem in previews:
         d = ImageDraw.Draw(img)
         for b in boxes:
             x0, y0, x1, y1 = b["xyxy"]
-            col = (255, 220, 0) if b["cls"] == len(CLASSES) - 1 else (0, 255, 80)
+            cls_name = CLASSES[b["cls"]]
+            col = (255, 215, 0) if cls_name == "item_drop" else (0, 255, 80)
             d.rectangle([x0, y0, x1, y1], outline=col, width=2)
-            d.text((x0 + 3, y0 + 1), CLASSES[b["cls"]], fill=col, font=load_font(13))
+            label_text = f"{KO_NAMES.get(cls_name, cls_name)}"
+            d.text((x0 + 3, y0 + 1), label_text, fill=col, font=load_font(13))
         img.save(out / "preview" / f"{stem}.jpg", quality=88)
 
     yaml = [
@@ -561,16 +542,20 @@ def main() -> int:
     (out / "data.yaml").write_text("\n".join(yaml) + "\n", encoding="utf-8")
 
     summary = {
-        "images": {"train": args.images - n_val, "val": n_val},
+        "images": {"train": n_train, "val": n_val, "total": args.images},
         "boxes": boxes_total,
         "per_class": stats,
         "size": args.size,
         "seed": args.seed,
         "classes": CLASSES,
         "korean_names": KO_NAMES,
+        "popular_monsters_count": len(assets.popular_monsters),
+        "total_monsters_count": len(assets.all_monsters),
+        "items_count": len(assets.items),
     }
     (out / "dataset_stats.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("\n생성 완료 요약:")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0
 

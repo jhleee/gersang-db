@@ -1,0 +1,604 @@
+[
+  {
+    "keyword": "이무기",
+    "name": "사악한이무기(雷)",
+    "key": "bsnake_80",
+    "file": "assets/monsters/imugi/bsnake_80.png",
+    "description": "유명계 3층 핵심 노가다 (유명계석)"
+  },
+  {
+    "keyword": "이무기",
+    "name": "이무기",
+    "key": "python_100",
+    "file": "assets/monsters/imugi/python_100.png",
+    "description": "유명계 3층 핵심 노가다 (유명계석)"
+  },
+  {
+    "keyword": "이무기",
+    "name": "뿌리 이무기",
+    "key": "rootpython_n_0",
+    "file": "assets/monsters/imugi/rootpython_n_0.png",
+    "description": "유명계 3층 핵심 노가다 (유명계석)"
+  },
+  {
+    "keyword": "이무기",
+    "name": "늪지이무기",
+    "key": "swamphydra_100",
+    "file": "assets/monsters/imugi/swamphydra_100.png",
+    "description": "유명계 3층 핵심 노가다 (유명계석)"
+  },
+  {
+    "keyword": "이무기",
+    "name": "이무기氷",
+    "key": "ice_python_115",
+    "file": "assets/monsters/imugi/ice_python_115.png",
+    "description": "유명계 3층 핵심 노가다 (유명계석)"
+  },
+  {
+    "keyword": "이무기",
+    "name": "연못이무기",
+    "key": "dragon_w_75",
+    "file": "assets/monsters/imugi/dragon_w_75.png",
+    "description": "유명계 3층 핵심 노가다 (유명계석)"
+  },
+  {
+    "keyword": "염라대왕",
+    "name": "염라대왕",
+    "key": "hellking_76",
+    "file": "assets/monsters/yeomra/hellking_76.png",
+    "description": "유명계 3층 보스 노가다 (알캐기)"
+  },
+  {
+    "keyword": "도철",
+    "name": "잠식된도철",
+    "key": "dochul_abyss_f_n_0",
+    "file": "assets/monsters/docheol/dochul_abyss_f_n_0.png",
+    "description": "대둔산 흉수의혼 / 렙업 몹"
+  },
+  {
+    "keyword": "도철",
+    "name": "흉포한 도철",
+    "key": "dochul4_100",
+    "file": "assets/monsters/docheol/dochul4_100.png",
+    "description": "대둔산 흉수의혼 / 렙업 몹"
+  },
+  {
+    "keyword": "도철",
+    "name": "태초의 도철",
+    "key": "ancient_dochul_n_0_0",
+    "file": "assets/monsters/docheol/ancient_dochul_n_0_0.png",
+    "description": "대둔산 흉수의혼 / 렙업 몹"
+  },
+  {
+    "keyword": "도철",
+    "name": "어린도철",
+    "key": "dochul3_100",
+    "file": "assets/monsters/docheol/dochul3_100.png",
+    "description": "대둔산 흉수의혼 / 렙업 몹"
+  },
+  {
+    "keyword": "도철",
+    "name": "도철",
+    "key": "dochul1_100",
+    "file": "assets/monsters/docheol/dochul1_100.png",
+    "description": "대둔산 흉수의혼 / 렙업 몹"
+  },
+  {
+    "keyword": "도철",
+    "name": "타락한도철",
+    "key": "fire_dochul_n_0",
+    "file": "assets/monsters/docheol/fire_dochul_n_0.png",
+    "description": "대둔산 흉수의혼 / 렙업 몹"
+  },
+  {
+    "keyword": "누에",
+    "name": "얼음누에",
+    "key": "icenue_160",
+    "file": "assets/monsters/nue/icenue_160.png",
+    "description": "얼음성/대둔산 환수의혼 몹"
+  },
+  {
+    "keyword": "누에",
+    "name": "조련된 누에",
+    "key": "nue_160",
+    "file": "assets/monsters/nue/nue_160.png",
+    "description": "얼음성/대둔산 환수의혼 몹"
+  },
+  {
+    "keyword": "삼문",
+    "name": "진보의 삼문",
+    "key": "advancedsammun_n_0",
+    "file": "assets/monsters/sammun/advancedsammun_n_0.png",
+    "description": "검은상단 중독된삼문 (생정/상재)"
+  },
+  {
+    "keyword": "삼문",
+    "name": "중독된삼문",
+    "key": "poisoninga_49",
+    "file": "assets/monsters/sammun/poisoninga_49.png",
+    "description": "검은상단 중독된삼문 (생정/상재)"
+  },
+  {
+    "keyword": "삼문",
+    "name": "삼문",
+    "key": "sammun_130",
+    "file": "assets/monsters/sammun/sammun_130.png",
+    "description": "검은상단 중독된삼문 (생정/상재)"
+  },
+  {
+    "keyword": "삼문",
+    "name": "각성한 삼문(雷)",
+    "key": "awakened_sammun_n_0",
+    "file": "assets/monsters/sammun/awakened_sammun_n_0.png",
+    "description": "검은상단 중독된삼문 (생정/상재)"
+  },
+  {
+    "keyword": "얼음게",
+    "name": "얼음게",
+    "key": "icecrab_101",
+    "file": "assets/monsters/icecrab/icecrab_101.png",
+    "description": "얼음성 210렙 고속 사냥터"
+  },
+  {
+    "keyword": "거북궁사",
+    "name": "거북궁사",
+    "key": "tuttleman_52",
+    "file": "assets/monsters/tuttleman/tuttleman_52.png",
+    "description": "계곡 짭호선 가성비 사냥터"
+  },
+  {
+    "keyword": "구미호",
+    "name": "구미호",
+    "key": "fox_40",
+    "file": "assets/negatives/fox_40.png",
+    "description": "월기봉/대관령 노가다"
+  },
+  {
+    "keyword": "멧돼지",
+    "name": "멧돼지",
+    "key": "wildboar_40",
+    "file": "assets/negatives/wildboar_40.png",
+    "description": "초반 필드 사냥"
+  },
+  {
+    "keyword": "딱정벌레",
+    "name": "딱정벌레",
+    "key": "beetle_39",
+    "file": "assets/negatives/beetle_39.png",
+    "description": "초보 필드 사냥터"
+  },
+  {
+    "keyword": "돌하루방",
+    "name": "돌하루방",
+    "key": "harubang_65",
+    "file": "assets/negatives/harubang_65.png",
+    "description": "한라산 노가다"
+  },
+  {
+    "keyword": "수문장",
+    "name": "수문장",
+    "key": "gatekeeper_w_100",
+    "file": "assets/negatives/gatekeeper_w_100.png",
+    "description": "던전 수문장 상재 몹"
+  },
+  {
+    "keyword": "전사의혼",
+    "name": "전사의혼",
+    "key": "warrior_h_100",
+    "file": "assets/negatives/warrior_h_100.png",
+    "description": "단단한 뼈조각/상재 몹"
+  },
+  {
+    "keyword": "구지모마녀",
+    "name": "구지모마녀",
+    "key": "guwitch_99",
+    "file": "assets/negatives/guwitch_99.png",
+    "description": "대관령/백호림 노가다"
+  },
+  {
+    "keyword": "고획조",
+    "name": "고획조新",
+    "key": "gohoekjo2-1_111",
+    "file": "assets/negatives/gohoekjo2-1_111.png",
+    "description": "백색보주 노가다"
+  },
+  {
+    "keyword": "독각귀",
+    "name": "독각귀",
+    "key": "doki_90",
+    "file": "assets/negatives/doki_90.png",
+    "description": "소림사 상재 몹"
+  },
+  {
+    "keyword": "해적 선장",
+    "name": "해적 선장",
+    "key": "piratecaptain_92",
+    "file": "assets/negatives/piratecaptain_92.png",
+    "description": "거제도 해적동굴 노가다"
+  },
+  {
+    "keyword": "적고적",
+    "name": "적고적우두머리",
+    "key": "red_boss_n_0",
+    "file": "assets/negatives/red_boss_n_0.png",
+    "description": "초보 노가다"
+  },
+  {
+    "keyword": "백영록",
+    "name": "백영록(弱)",
+    "key": "baegyeong_n_0",
+    "file": "assets/negatives/baegyeong_n_0.png",
+    "description": "초중급 상재 몹"
+  },
+  {
+    "keyword": "원로시녀",
+    "name": "원로시녀",
+    "key": "senior_maid_48",
+    "file": "assets/negatives/senior_maid_48.png",
+    "description": "샤오링의후원 상재 몹"
+  },
+  {
+    "keyword": "마오",
+    "name": "마오",
+    "key": "statueb_71",
+    "file": "assets/negatives/statueb_71.png",
+    "description": "대만/차우신전 노가다"
+  },
+  {
+    "keyword": "라마",
+    "name": "라마",
+    "key": "rama_m_80",
+    "file": "assets/negatives/rama_m_80.png",
+    "description": "인도 사냥터"
+  },
+  {
+    "keyword": "인드라",
+    "name": "인드라",
+    "key": "indra_100",
+    "file": "assets/negatives/indra_100.png",
+    "description": "인도 상급 사냥터"
+  },
+  {
+    "keyword": "염조",
+    "name": "염조",
+    "key": "fire_bird_70",
+    "file": "assets/negatives/fire_bird_70.png",
+    "description": "수미산/신선곡 화속성 몹"
+  },
+  {
+    "keyword": "무간귀",
+    "name": "무간귀",
+    "key": "mukangui_n1_0_0",
+    "file": "assets/negatives/mukangui_n1_0_0.png",
+    "description": "지하감옥/악몽 노가다"
+  },
+  {
+    "keyword": "독룡",
+    "name": "독룡",
+    "key": "poisondragon_100",
+    "file": "assets/negatives/poisondragon_100.png",
+    "description": "독룡의비늘 노가다"
+  },
+  {
+    "keyword": "비호",
+    "name": "비호",
+    "key": "agiletiger_135",
+    "file": "assets/negatives/agiletiger_135.png",
+    "description": "대관령/신선곡 렙업 몹"
+  },
+  {
+    "keyword": "비호",
+    "name": "어린비호",
+    "key": "biho_s_65",
+    "file": "assets/negatives/biho_s_65.png",
+    "description": "대관령/신선곡 렙업 몹"
+  },
+  {
+    "keyword": "화염거인",
+    "name": "화염거인",
+    "key": "firegaint_140",
+    "file": "assets/negatives/firegaint_140.png",
+    "description": "수미산 지국천왕 던전 화속성"
+  },
+  {
+    "keyword": "증장천왕",
+    "name": "증장천왕",
+    "key": "jungjangchun_m_80",
+    "file": "assets/negatives/jungjangchun_m_80.png",
+    "description": "수미산 뇌속성 사천왕 몹"
+  },
+  {
+    "keyword": "지국천왕",
+    "name": "지국천왕",
+    "key": "jigukchun_m_80",
+    "file": "assets/negatives/jigukchun_m_80.png",
+    "description": "수미산 화속성 사천왕 몹"
+  },
+  {
+    "keyword": "거미요괴",
+    "name": "거미요괴",
+    "key": "widow_93",
+    "file": "assets/negatives/widow_93.png",
+    "description": "광려산 맹독 사냥터"
+  },
+  {
+    "keyword": "뇌우궁",
+    "name": "뇌우궁",
+    "key": "noeu_t_n_0",
+    "file": "assets/negatives/noeu_t_n_0.png",
+    "description": "수미산 뇌속성 원거리 몹"
+  },
+  {
+    "keyword": "기문교호법",
+    "name": "기문교호법",
+    "key": "cultkimoon_defence_cult_90",
+    "file": "assets/negatives/cultkimoon_defence_cult_90.png",
+    "description": "소림사 기문교 상재 몹"
+  },
+  {
+    "keyword": "기문광신도",
+    "name": "기문광신도",
+    "key": "cultkimoon_fanatic_67",
+    "file": "assets/negatives/cultkimoon_fanatic_67.png",
+    "description": "소림사 상재 몹"
+  },
+  {
+    "keyword": "한신의혼",
+    "name": "한신의혼(强)",
+    "key": "hansin_67",
+    "file": "assets/negatives/hansin_67.png",
+    "description": "한신의사당 상재 몹"
+  },
+  {
+    "keyword": "요술사령",
+    "name": "요술사령(强)",
+    "key": "magician_113",
+    "file": "assets/negatives/magician_113.png",
+    "description": "소림사 주술 몹"
+  },
+  {
+    "keyword": "거구귀",
+    "name": "거구귀(雷)",
+    "key": "bigmouth_oni_n_0",
+    "file": "assets/negatives/bigmouth_oni_n_0.png",
+    "description": "광려산 상재 몹"
+  },
+  {
+    "keyword": "거대수",
+    "name": "거대수",
+    "key": "bigtree_104",
+    "file": "assets/negatives/bigtree_104.png",
+    "description": "신선곡 목속성 몹"
+  },
+  {
+    "keyword": "도사_각",
+    "name": "도사_각(雷)",
+    "key": "master_gak_n_0",
+    "file": "assets/negatives/master_gak_n_0.png",
+    "description": "도사의사당 뇌속성 사냥터"
+  },
+  {
+    "keyword": "도사_방",
+    "name": "도사_방(雷)",
+    "key": "master_bang_n_0",
+    "file": "assets/negatives/master_bang_n_0.png",
+    "description": "도사의사당 화속성 사냥터"
+  },
+  {
+    "keyword": "도사_삼",
+    "name": "도사_삼",
+    "key": "master_sam_n_0",
+    "file": "assets/negatives/master_sam_n_0.png",
+    "description": "도사의사당 풍속성 사냥터"
+  },
+  {
+    "keyword": "도사_루",
+    "name": "도사_루",
+    "key": "master_roo_n_0",
+    "file": "assets/negatives/master_roo_n_0.png",
+    "description": "도사의사당 수속성 사냥터"
+  },
+  {
+    "keyword": "도사_성",
+    "name": "도사_성",
+    "key": "master_sung_n_0",
+    "file": "assets/negatives/master_sung_n_0.png",
+    "description": "도사의사당 토속성 사냥터"
+  },
+  {
+    "keyword": "도사_심",
+    "name": "도사_심(雷)",
+    "key": "master_sim_n_0",
+    "file": "assets/negatives/master_sim_n_0.png",
+    "description": "도사의사당 상급 사냥터"
+  },
+  {
+    "keyword": "도사_필",
+    "name": "도사_필",
+    "key": "master_pil_n_0",
+    "file": "assets/negatives/master_pil_n_0.png",
+    "description": "도사의사당 최상급 사냥터"
+  },
+  {
+    "keyword": "궁수산적",
+    "name": "궁수산적",
+    "key": "bandit4_48",
+    "file": "assets/negatives/bandit4_48.png",
+    "description": "필드 원거리 몹"
+  },
+  {
+    "keyword": "꼬마산적",
+    "name": "꼬마산적",
+    "key": "bandit_40",
+    "file": "assets/negatives/bandit_40.png",
+    "description": "초보 필드 몹"
+  },
+  {
+    "keyword": "낭인",
+    "name": "낭인_배객",
+    "key": "bae_w_100",
+    "file": "assets/negatives/bae_w_100.png",
+    "description": "일본 필드 몹"
+  },
+  {
+    "keyword": "파갑귀",
+    "name": "파갑귀",
+    "key": "wind2_fiend_n_0",
+    "file": "assets/negatives/wind2_fiend_n_0.png",
+    "description": "수미산 풍속성 몹"
+  },
+  {
+    "keyword": "연노수",
+    "name": "연노수의혼(楚)",
+    "key": "catapult1_70",
+    "file": "assets/negatives/catapult1_70.png",
+    "description": "초급 상재 몹"
+  },
+  {
+    "keyword": "잠식된유방",
+    "name": "잠식된유방",
+    "key": "liubang_abyss_w_n_0",
+    "file": "assets/negatives/liubang_abyss_w_n_0.png",
+    "description": "악몽의근원 몹"
+  },
+  {
+    "keyword": "원망신",
+    "name": "원망신",
+    "key": "resentfgod_n_0",
+    "file": "assets/negatives/resentfgod_n_0.png",
+    "description": "악몽 사냥터 보스"
+  },
+  {
+    "keyword": "절망신",
+    "name": "절망신",
+    "key": "despairwgod_n_0",
+    "file": "assets/negatives/despairwgod_n_0.png",
+    "description": "악몽 사냥터 보스"
+  },
+  {
+    "keyword": "절망신",
+    "name": "절망신(雷)",
+    "key": "despairtgod_n_0",
+    "file": "assets/negatives/despairtgod_n_0.png",
+    "description": "악몽 사냥터 보스"
+  },
+  {
+    "keyword": "수상한 도깨비",
+    "name": "수상한 도깨비",
+    "key": "goblin_g_n_0",
+    "file": "assets/negatives/goblin_g_n_0.png",
+    "description": "이벤트/필드 도깨비"
+  },
+  {
+    "keyword": "야마와_야미",
+    "name": "야마와_야미",
+    "key": "yamayami_51",
+    "file": "assets/negatives/yamayami_51.png",
+    "description": "일본 던전 몹"
+  },
+  {
+    "keyword": "현천무녀",
+    "name": "현천무녀 소혼",
+    "key": "hyunshaman_f_n_0",
+    "file": "assets/negatives/hyunshaman_f_n_0.png",
+    "description": "소림사/원화 사냥터"
+  },
+  {
+    "keyword": "현천무녀",
+    "name": "현천무녀 소혼",
+    "key": "hyunshaman_a_n_0",
+    "file": "assets/negatives/hyunshaman_a_n_0.png",
+    "description": "소림사/원화 사냥터"
+  },
+  {
+    "keyword": "괴조귀",
+    "name": "괴조귀(弱)",
+    "key": "gwaejo_fiend_n_0",
+    "file": "assets/negatives/gwaejo_fiend_n_0.png",
+    "description": "신선곡 비행 몹"
+  },
+  {
+    "keyword": "늪지감시자",
+    "name": "늪지감시자",
+    "key": "swampwatch_80",
+    "file": "assets/negatives/swampwatch_80.png",
+    "description": "늪지 노가다 몹"
+  },
+  {
+    "keyword": "강철상병",
+    "name": "강철상병",
+    "key": "steelelephant_n_0",
+    "file": "assets/negatives/steelelephant_n_0.png",
+    "description": "검은상단 상재 몹"
+  },
+  {
+    "keyword": "광우",
+    "name": "광우",
+    "key": "madbull_63",
+    "file": "assets/negatives/madbull_63.png",
+    "description": "광려산 황소 몹"
+  },
+  {
+    "keyword": "냉혹한 궁기",
+    "name": "냉혹한 궁기",
+    "key": "goongi4_50",
+    "file": "assets/negatives/goongi4_50.png",
+    "description": "흉수 궁기 몹"
+  },
+  {
+    "keyword": "마츠야",
+    "name": "마츠야",
+    "key": "matsya_80",
+    "file": "assets/negatives/matsya_80.png",
+    "description": "인도 수속성 몹"
+  },
+  {
+    "keyword": "마카라",
+    "name": "마카라",
+    "key": "makara_n_0",
+    "file": "assets/negatives/makara_n_0.png",
+    "description": "인도 수속성 몹"
+  },
+  {
+    "keyword": "나라심하",
+    "name": "나라심하",
+    "key": "narasimha_80",
+    "file": "assets/negatives/narasimha_80.png",
+    "description": "인도 상급 몹"
+  },
+  {
+    "keyword": "나문신장",
+    "name": "나문신장",
+    "key": "namun_f_n_0",
+    "file": "assets/negatives/namun_f_n_0.png",
+    "description": "천옥 신장 몹"
+  },
+  {
+    "keyword": "루드라",
+    "name": "루드라의혼",
+    "key": "rudra_120",
+    "file": "assets/negatives/rudra_120.png",
+    "description": "인도 바람속성 몹"
+  },
+  {
+    "keyword": "시바의 사제",
+    "name": "시바의 사제",
+    "key": "shiva_pawn_120",
+    "file": "assets/negatives/shiva_pawn_120.png",
+    "description": "인도 사제 몹"
+  },
+  {
+    "keyword": "아가수라",
+    "name": "아가수라",
+    "key": "hirana_84",
+    "file": "assets/negatives/hirana_84.png",
+    "description": "인도 악귀 몹"
+  },
+  {
+    "keyword": "아랑궁",
+    "name": "아랑궁",
+    "key": "arang_f_n_0",
+    "file": "assets/negatives/arang_f_n_0.png",
+    "description": "광려산 원거리 몹"
+  }
+]
