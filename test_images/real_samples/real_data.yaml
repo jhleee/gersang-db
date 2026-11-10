@@ -1,0 +1,6 @@
+path: /content/gersang-db/test_images/real_samples
+val: images
+nc: 2
+names:
+  0: monster
+  1: item_drop

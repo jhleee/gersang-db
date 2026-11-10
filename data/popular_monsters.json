@@ -600,5 +600,50 @@
     "key": "arang_f_n_0",
     "file": "assets/negatives/arang_f_n_0.png",
     "description": "광려산 원거리 몹"
+  },
+  {
+    "id": "M_SKELETON_01",
+    "name": "유령해골병사",
+    "area": "유명계 1~2층",
+    "tier": "popular",
+    "sprite_filename": "assets/monsters/skeleton/skeletonsoldier_54.png",
+    "reason": "유명계 초중반 핵심 파밍 몬스터 (정훈 님 실사 캡처 2번·3번 샘플)",
+    "file": "assets/monsters/skeleton/skeletonsoldier_54.png"
+  },
+  {
+    "id": "M_SKELETON_02",
+    "name": "불타는해골",
+    "area": "이시즈치산·오로치의둥지",
+    "tier": "popular",
+    "sprite_filename": "assets/monsters/skeleton/burnskul_120.png",
+    "reason": "이시즈치산 선조석 파밍 해골 몬스터",
+    "file": "assets/monsters/skeleton/burnskul_120.png"
+  },
+  {
+    "id": "M_SKELETON_03",
+    "name": "유령해골",
+    "area": "유명계 1층",
+    "tier": "popular",
+    "sprite_filename": "assets/monsters/skeleton/skeletonchar_51.png",
+    "reason": "유명계 기초 몬스터",
+    "file": "assets/monsters/skeleton/skeletonchar_51.png"
+  },
+  {
+    "id": "M_CENTIPEDE_01",
+    "name": "독지네",
+    "area": "이시즈치산 2층",
+    "tier": "popular",
+    "sprite_filename": "assets/monsters/imugi/centipede_online_61.png",
+    "reason": "이시즈치산 반자사 인기 몬스터",
+    "file": "assets/monsters/imugi/centipede_online_61.png"
+  },
+  {
+    "id": "M_DRAGON_01",
+    "name": "화룡",
+    "area": "이시즈치산 2층",
+    "tier": "popular",
+    "sprite_filename": "assets/monsters/imugi/firedragon_s_72.png",
+    "reason": "이시즈치산 반자사 보스 몬스터",
+    "file": "assets/monsters/imugi/firedragon_s_72.png"
   }
 ]
